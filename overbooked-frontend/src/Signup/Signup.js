@@ -14,7 +14,7 @@ class SignUp extends React.Component {
     e.preventDefault();
     if (this.password === this.passwordVerification) {
       axios
-        .post("http://localhost:5000/api/signup", {
+        .post("http://localhost:8080/api/signup", {
           name: this.state.name,
           email: this.state.email,
           username: this.state.username,
