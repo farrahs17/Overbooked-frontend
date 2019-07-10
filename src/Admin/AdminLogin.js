@@ -4,7 +4,7 @@ import { saveToken } from "../Utils/utils";
 
 class AdminLogin extends React.Component {
   state = {
-    username: "",
+    email: "",
     password: ""
   };
 
@@ -12,7 +12,7 @@ class AdminLogin extends React.Component {
     e.preventDefault();
     axios
       .post("http://localhost:8080/api/login-admin", {
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password
       })
       .then(res => {
@@ -22,9 +22,9 @@ class AdminLogin extends React.Component {
       });
   };
 
-  handleUsernameChange = e => {
-    const username = e.target.value;
-    this.setState({ username: username });
+  handleEmailChange = e => {
+    const email = e.target.value;
+    this.setState({ email: email });
   };
   handlePasswordChange = e => {
     const pass = e.target.value;
@@ -36,12 +36,12 @@ class AdminLogin extends React.Component {
       <div className="login-container">
         <form onSubmit={this.handleSubmit}>
           <label className="username-label">
-            Username
+            Email
             <input
-              onChange={this.handleUsernameChange}
+              onChange={this.handleEmailChange}
               type="text"
               id="username"
-              name="username"
+              name="email"
             />
           </label>
           <label>
