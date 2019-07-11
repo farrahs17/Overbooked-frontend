@@ -1,8 +1,13 @@
 import React from "react";
+import EventsList from "../EventsList/EventsList";
 
 class HomePage extends React.Component {
   render() {
-    return <div>Hello</div>;
+    return (
+      <div>
+        <EventsList />
+      </div>
+    );
   }
 }
 
