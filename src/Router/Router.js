@@ -5,6 +5,7 @@ import SignUp from "../Signup/Signup";
 import HomePage from "../HomePage/HomePage";
 import AdminLogin from "../Admin/AdminLogin";
 import AdminHomepage from "../Admin/AdminHomePage";
+import createEvent from "../Events/createEvent";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin/homepage" component={AdminHomepage} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/admin/create-event" component={createEvent} />
       </Switch>
     </router>
   );
