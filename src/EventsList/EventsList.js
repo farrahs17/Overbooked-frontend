@@ -6,9 +6,9 @@ class EventsList extends React.Component {
     events: []
   };
   componentDidMount() {
-    axios.get("http://localhost:8080/get-tickets").then(response => {
+    axios.get("http://localhost:8080/api/get-tickets").then(response => {
       this.setState({
-        events: [...this.state.events, response.data]
+        events: response.data.events
       });
     });
   }
@@ -16,15 +16,7 @@ class EventsList extends React.Component {
     return this.state.events.map(event => {
       return (
         <div className="event" id={event.id}>
-          <Event
-            id={event.id}
-            title={event.title}
-            category={event.category}
-            description={event.description}
-            starts_at={event.starts_at}
-            ends_at={event.ends_at}
-            image={event.image}
-          />
+          <Event event={event} />
         </div>
       );
     });

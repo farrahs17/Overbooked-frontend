@@ -1,8 +1,13 @@
 import React from "react";
+import EventsList from "../EventsList/EventsList";
 
 class AdminHomePage extends React.Component {
   render() {
-    return <div>Admin</div>;
+    return (
+      <div>
+        <EventsList />
+      </div>
+    );
   }
 }
 

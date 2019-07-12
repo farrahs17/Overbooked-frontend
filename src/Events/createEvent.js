@@ -62,7 +62,7 @@ class createEvent extends Component {
         this.setState({
           image: "",
           title: "",
-          category: [],
+          category: "",
           description: "",
           startsAt: "",
           endsAt: ""
@@ -74,11 +74,11 @@ class createEvent extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div class="form-group">
             <label for="exampleFormControlInput1">Image</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter image"
@@ -89,7 +89,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">title</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter title"
@@ -100,7 +100,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">Category</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter category"
@@ -111,7 +111,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">Description</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter description"
@@ -122,7 +122,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">Starts At:</label>
             <input
-              type="email"
+              type="date"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Starts At"
@@ -133,7 +133,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">Ends At:</label>
             <input
-              type="email"
+              type="date"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Ends At"

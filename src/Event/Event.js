@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Event = props => {
+const Event = ({ event }) => {
   return (
-    <div className="event" id={props.id}>
+    <div className="event" id={event.id}>
       <div className="event-header">
-        <h2>{props.title}</h2>
-        <time>{moment(props.starts_at).format("MMMM Do YYYY")}</time>
-        <time>{moment(props.ends_at).format("MMMM Do YYYY")}</time>
-        <p>{props.category}</p>
+        <h2>{event.title}</h2>
+        <time>{moment(event.startsAt).format("MMMM Do YYYY")}</time>
+        <time>{moment(event.endsAt).format("MMMM Do YYYY")}</time>
+        <p>{event.category}</p>
       </div>
       <figure>
-        <img className="post-img" src={props.image} alt={props.title} />
+        <img className="post-img" src={event.image} alt={event.title} />
       </figure>
-      <p>{props.description}</p>
+      <p>{event.description}</p>
     </div>
   );
 };
