@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import TicketTiers from "./ticketTiers";
 class createEvent extends Component {
   state = {
     image: "",
@@ -99,14 +99,21 @@ class createEvent extends Component {
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Category</label>
-            <input
+            <select
               type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter category"
               value={this.state.category}
               onChange={this.handleCategoryChange}
-            />
+            >
+              <option value="Arts & Theater">Arts & Theater</option>
+              <option value="Business">Business</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Music">Music</option>
+              <option value="Sports">Sports</option>
+              <option value="Cenima">Cenima</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Description</label>
@@ -141,6 +148,7 @@ class createEvent extends Component {
               onChange={this.handleEndsChange}
             />
           </div>
+          <TicketTiers />
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
