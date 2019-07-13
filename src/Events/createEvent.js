@@ -56,7 +56,7 @@ class createEvent extends Component {
       endsAt: this.state.endsAt
     };
     axios
-      .post(`http://localhost:8080/api/post-ticket`, data)
+      .post(`http://localhost:8080/api/post-event`, data)
       .then(res => {
         this.props.addPost({ ...data, votes: 0 });
         this.setState({
@@ -74,16 +74,17 @@ class createEvent extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <div class="form-group">
             <label for="exampleFormControlInput1">Image</label>
             <input
-              type="text"
+              type="file"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter image"
               value={this.state.image}
               onChange={this.handleImageChange}
+              name="image"
             />
           </div>
           <div class="form-group">

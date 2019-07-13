@@ -15,6 +15,8 @@ const Event = ({ event }) => {
         <img className="post-img" src={event.image} alt={event.title} />
       </figure>
       <p>{event.description}</p>
+
+      <Link to={`/event-details/${event.id}`}>See more</Link>
     </div>
   );
 };
