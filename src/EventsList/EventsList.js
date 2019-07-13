@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
 import Event from "../Event/Event";
+import { baseUrl } from "../baseUrl";
 class EventsList extends React.Component {
   state = {
     events: []
   };
   componentDidMount() {
-    axios.get("http://localhost:8080/api/get-tickets").then(response => {
+    axios.get(`${baseUrl}/api/get-event`).then(response => {
       this.setState({
         events: response.data.events
       });

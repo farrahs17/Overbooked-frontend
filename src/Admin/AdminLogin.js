@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { saveToken } from "../Utils/utils";
+import { baseUrl } from "../baseUrl";
 
 class AdminLogin extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class AdminLogin extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/login-admin", {
+      .post(`${baseUrl}/api/login-admin`, {
         email: this.state.email,
         password: this.state.password
       })

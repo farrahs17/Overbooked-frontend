@@ -3,6 +3,7 @@ import axios from "axios";
 import { saveToken } from "../Utils/utils";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { baseUrl } from "./../baseUrl";
 
 class Login extends React.Component {
   state = {
@@ -13,7 +14,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/login", {
+      .post(`${baseUrl}/api/login`, {
         email: this.state.email,
         password: this.state.password
       })

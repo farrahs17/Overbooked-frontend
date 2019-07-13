@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import { baseUrl } from "../baseUrl";
 class SignUp extends React.Component {
   state = {
     email: "",
@@ -13,7 +13,7 @@ class SignUp extends React.Component {
     e.preventDefault();
     if (this.password === this.passwordVerification) {
       axios
-        .post("http://localhost:8080/api/signup", {
+        .post(`${baseUrl}/api/signup`, {
           email: this.state.email,
           username: this.state.username,
           password: this.state.password
