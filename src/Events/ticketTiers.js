@@ -1,39 +1,17 @@
 import React from "react";
 
 class TicketTiers extends React.Component {
-  state = {
-    tickets: [{ type: "", price: 0 }]
-  };
-
-  addTicket = e => {
-    this.setState(prevState => ({
-      tickets: [...prevState.tickets, { type: "", price: "" }]
-    }));
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-  };
-  handleChange = e => {
-    if (["type", "price"].includes(e.target.className)) {
-      let tickets = [...this.state.tickets];
-      tickets[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ tickets }, () => console.log(this.state.tickets));
-    } else {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  };
-  handleCategoryChange = e => {
-    this.setState({
-      category: e.target.value
-    });
-  };
+  //   handleCategoryChange = e => {
+  //     this.setState({
+  //       category: e.target.value
+  //     });
+  //   };
 
   render() {
-    let { ticket } = this.state;
+    let { tickets, handleTicketChange, addTicket } = this.props;
     return (
       <div>
-        {this.state.tickets.map((val, id) => {
+        {tickets.map((val, id) => {
           let ticketId = `ticket-${id}`;
           let priceId = `price-${id}`;
           return (
@@ -41,8 +19,8 @@ class TicketTiers extends React.Component {
               <label htmlFor="ticket-type">
                 Ticket Type
                 <select
-                  value={this.state.tickets.type}
-                  onChange={this.handleCategoryChange}
+                  value={tickets.type}
+                  onChange={handleTicketChange}
                   name={ticketId}
                   className="type"
                   data-id={id}
@@ -60,12 +38,13 @@ class TicketTiers extends React.Component {
                   className="price"
                   data-id={id}
                   id={priceId}
+                  onChange={handleTicketChange}
                 />
               </label>
             </div>
           );
         })}
-        <button onClick={this.addTicket}>Add new ticket</button>
+        <button onClick={addTicket}>Add new ticket</button>
       </div>
     );
   }

@@ -5,11 +5,28 @@ class createEvent extends Component {
   state = {
     image: "",
     title: "",
-    category: "",
+    category: "Arts & Theater",
     description: "",
     startsAt: "",
-    endsAt: ""
+    endsAt: "",
+    tickets: [{ type: "Early Bird", price: 0 }]
   };
+
+  handleTicketChange = e => {
+    if (["type", "price"].includes(e.target.className)) {
+      let tickets = [...this.state.tickets];
+      tickets[e.target.dataset.id][e.target.className] = e.target.value;
+      this.setState({ tickets }, () => console.log(this.state));
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+  };
+  addTicket = e => {
+    this.setState(prevState => ({
+      tickets: [...prevState.tickets, { type: "Early Bird", price: "" }]
+    }));
+  };
+
   handleImageChange = e => {
     this.setState({
       image: e.target.value
@@ -47,26 +64,10 @@ class createEvent extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const data = {
-      image: this.state.image,
-      title: this.state.title,
-      category: this.state.category,
-      description: this.state.description,
-      startsAt: this.state.startsAt,
-      endsAt: this.state.endsAt
-    };
     axios
-      .post(`http://localhost:8080/api/post-ticket`, data)
+      .post(`http://localhost:8080/api/post-event`, this.state)
       .then(res => {
-        this.props.addPost({ ...data, votes: 0 });
-        this.setState({
-          image: "",
-          title: "",
-          category: "",
-          description: "",
-          startsAt: "",
-          endsAt: ""
-        });
+        console.log(res);
       })
       .catch(err => console.log(err));
   };
@@ -148,7 +149,11 @@ class createEvent extends Component {
               onChange={this.handleEndsChange}
             />
           </div>
-          <TicketTiers />
+          <TicketTiers
+            tickets={this.state.tickets}
+            handleTicketChange={this.handleTicketChange}
+            addTicket={this.addTicket}
+          />
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
