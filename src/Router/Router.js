@@ -6,6 +6,7 @@ import HomePage from "../HomePage/HomePage";
 import AdminLogin from "../Admin/AdminLogin";
 import AdminHomepage from "../Admin/AdminHomePage";
 import createEvent from "../Events/createEvent";
+import EventDetails from "../Event/Event-details";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/admin/homepage" component={AdminHomepage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/admin/create-event" component={createEvent} />
+        <Route path="/event-details/:id" component={EventDetails} />
       </Switch>
     </router>
   );

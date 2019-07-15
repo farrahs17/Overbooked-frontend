@@ -76,16 +76,17 @@ class createEvent extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <div class="form-group">
             <label for="exampleFormControlInput1">Image</label>
             <input
-              type="text"
+              type="file"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter image"
               value={this.state.image}
               onChange={this.handleImageChange}
+              name="image"
             />
           </div>
           <div class="form-group">
