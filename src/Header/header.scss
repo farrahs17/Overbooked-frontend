@@ -1,7 +1,21 @@
 .header-bg {
   background-color: #cde6f3;
-}
+  height: 80px;
+  .logo {
+    color: #4a4e69;
 
-.logo {
-  color: #4a4e69;
+    h1 {
+      font-size: 35px;
+    }
+  }
+  button {
+    background-color: #4a4e69;
+    border-color: #4a4e69;
+    border-radius: 5%;
+  }
+  button:hover,
+  button:active {
+    border-color: white !important;
+    background-color: #4a4e69af !important;
+  }
 }

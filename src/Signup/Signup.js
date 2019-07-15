@@ -92,38 +92,40 @@ class SignUp extends React.Component {
       //   </form>
       // </div>
 
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter username"
-            onChange={this.handleUsernameChange}
-            name="email"
-          />
-        </Form.Group>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            onChange={this.handleEmailChange}
-            name="email"
-          />
-        </Form.Group>
+      <Form onSubmit={this.handleSubmit} className="form-container">
+        <div className="form-outline">
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter username"
+              onChange={this.handleUsernameChange}
+              name="email"
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              onChange={this.handleEmailChange}
+              name="email"
+            />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            onChange={this.handlePasswordChange}
-            name="password"
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Sign Up
-        </Button>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={this.handlePasswordChange}
+              name="password"
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Sign Up
+          </Button>
+        </div>
       </Form>
     );
   }

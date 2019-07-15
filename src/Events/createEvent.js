@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TicketTiers from "./ticketTiers";
-import { baseUrl } from "../baseUrl";
+// import { baseUrl } from "../baseUrl";
 class createEvent extends Component {
   state = {
     image: "",
@@ -66,7 +66,7 @@ class createEvent extends Component {
     e.preventDefault();
 
     axios
-      .post(`${baseUrl}/post-event`, this.state)
+      .post(`http://localhost:8080/api/post-event`, this.state)
       .then(res => {
         console.log(res);
       })

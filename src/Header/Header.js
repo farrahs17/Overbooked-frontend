@@ -2,18 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
 
 class Header extends React.Component {
   render() {
     return (
-      // <nav className="container nav-bar navbar-expand-lg navbar-light bg-light">
-      //   <div className="header-container">
-      //     <Link className="navbar-brand" to="/">
-      //       <h1>OverBooked</h1>
-      //     </Link>
-      //   </div>
-      //   <LoginContainer />
-      // </nav>
       <Navbar
         collapseOnSelect
         expand="lg"
@@ -30,19 +23,19 @@ class Header extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link>
               <Link className="nav-link nav-item" to="/admin/login">
-                <a>Admin?</a>
+                Admin?
               </Link>
             </Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link>
               <Link className="nav-link nav-item" to="/login">
-                <a>Log In</a>
+                <Button className="nav-button">Log In</Button>
               </Link>
             </Nav.Link>
             <Nav.Link>
               <Link className="nav-link nav-item" to="/signup">
-                <a>Sign Up</a>
+                <Button className="nav-button">Sign Up</Button>
               </Link>
             </Nav.Link>
           </Nav>
