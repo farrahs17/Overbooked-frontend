@@ -80,7 +80,7 @@ class createEvent extends Component {
           <div class="form-group">
             <label for="exampleFormControlInput1">Image</label>
             <input
-              type="file"
+              type="text"
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter image"
@@ -115,7 +115,7 @@ class createEvent extends Component {
               <option value="Fashion">Fashion</option>
               <option value="Music">Music</option>
               <option value="Sports">Sports</option>
-              <option value="Cenima">Cenima</option>
+              <option value="Cinema">Cenima</option>
             </select>
           </div>
           <div class="form-group">

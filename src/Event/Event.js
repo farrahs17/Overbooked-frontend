@@ -1,14 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { Card } from "antd";
+import { Card, Icon } from "antd";
 import "antd/dist/antd.css";
+
 const { Meta } = Card;
 
-const Event = ({ event }) => {
+const Event = ({ event, handleDelete }) => {
   return (
     <div className="event" id={event.id}>
       <Card
+        style={{ width: 300 }}
+        cover={<img alt={event.title} src={event.image} />}
+        actions={[
+          <Icon type="delete" onClick={handleDelete} />,
+          <Icon type="edit" />,
+          <Link to={`/event-details/${event.id}`}>
+            <Icon type="ellipsis" />
+          </Link>
+        ]}
+      >
+        <Meta title={event.title} description={event.description} />
+        <p>{event.category}</p>
+
+        <time>Starts At:{moment(event.startsAt).format("MMMM Do YYYY")}</time>
+        <time>Ends At:{moment(event.endsAt).format("MMMM Do YYYY")}</time>
+      </Card>
+      {/* <Card
         hoverable
         style={{ width: 240 }}
         cover={<img alt={event.title} src={event.image} />}
@@ -18,7 +36,8 @@ const Event = ({ event }) => {
         <time>{moment(event.startsAt).format("MMMM Do YYYY")}</time>
         <time>{moment(event.endsAt).format("MMMM Do YYYY")}</time>
         <Link to={`/event-details/${event.id}`}>See more</Link>
-      </Card>
+        <button onClick={handleDelete}>Delete Event</button>
+      </Card> */}
       {/* //   <div className="event-header">
     //     <h2>{event.title}</h2>
     //     <time>{moment(event.startsAt).format("MMMM Do YYYY")}</time>
