@@ -23,45 +23,48 @@ class editEvent extends Component {
       return this.setState({ isLoading: false, event: event.data });
     });
   }
-  handleEditSubmit(e, id) {
+  handleEditSubmit = e => {
     e.preventDefault();
-
-    axios.put(`http://localhost:8080/api/edit-event/${id}`).then(event => {
-      console.log(event);
-      return this.setState({ isLoading: false, event: event.data.result });
-    });
-  }
+    const { id } = this.props.match.params;
+    axios
+      .put(`http://localhost:8080/api/edit-event/${id}`, this.state.event)
+      .then(event => {
+        console.log(event);
+        return this.setState({ isLoading: false, event: event.data.result });
+      });
+  };
   handleImageEdit = e => {
     this.setState({
-      event: { image: e.target.value }
+      event: { ...this.state.event, image: e.target.value }
     });
   };
 
   handleTitleEdit = e => {
     this.setState({
-      event: { title: e.target.value }
+      event: { ...this.state.event, title: e.target.value }
     });
   };
 
   handleCategoryEdit = e => {
     this.setState({
-      event: { category: e.target.value }
+      event: { ...this.state.event, category: e.target.value }
     });
   };
 
   handleDescEdit = e => {
     this.setState({
-      event: { description: e.target.value }
+      event: { ...this.state.event, description: e.target.value }
     });
   };
   handleStartsEdit = e => {
+    console.log(e.target.value);
     this.setState({
-      event: { startsAt: e.target.value }
+      event: { ...this.state.event, startsAt: e.target.value }
     });
   };
   handleEndsEdit = e => {
     this.setState({
-      event: { endsAt: e.target.value }
+      event: { ...this.state.event, endsAt: e.target.value }
     });
   };
 

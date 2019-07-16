@@ -173,7 +173,7 @@ class CreateEvent extends Component {
                       <option value="Fashion">Fashion</option>
                       <option value="Music">Music</option>
                       <option value="Sports">Sports</option>
-                      <option value="Cinema">Cenima</option>
+                      <option value="Cinema">Cinema</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -204,7 +204,7 @@ class CreateEvent extends Component {
                       placeholder="Starts At"
                       value={
                         this.props.edit
-                          ? this.props.value.startsAt
+                          ? this.props.value.startsAt.split("T")[0]
                           : this.state.startsAt
                       }
                       onChange={
@@ -223,7 +223,7 @@ class CreateEvent extends Component {
                       placeholder="Ends At"
                       value={
                         this.props.edit
-                          ? this.props.value.endsAt
+                          ? this.props.value.endsAt.split("T")[0]
                           : this.state.endsAt
                       }
                       onChange={
