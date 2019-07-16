@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TicketTiers from "./ticketTiers";
-class createEvent extends Component {
+class CreateEvent extends Component {
   state = {
     image: "",
     title: "",
@@ -75,7 +75,12 @@ class createEvent extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} encType="multipart/form-data">
+        <form
+          onSubmit={
+            this.props.edit ? this.props.handleEditSubmit : this.handleSubmit
+          }
+          encType="multipart/form-data"
+        >
           <div class="form-group">
             <label for="exampleFormControlInput1">Image</label>
             <input
@@ -83,8 +88,14 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter image"
-              value={this.state.image}
-              onChange={this.handleImageChange}
+              value={
+                this.props.edit ? this.props.value.image : this.state.image
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleImageEdit
+                  : this.handleImageChange
+              }
               name="image"
             />
           </div>
@@ -95,8 +106,14 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter title"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
+              value={
+                this.props.edit ? this.props.value.title : this.state.title
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleTitleEdit
+                  : this.handleTitleChange
+              }
             />
           </div>
           <div class="form-group">
@@ -106,15 +123,23 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter category"
-              value={this.state.category}
-              onChange={this.handleCategoryChange}
+              value={
+                this.props.edit
+                  ? this.props.value.category
+                  : this.state.category
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleCategoryEdit
+                  : this.handleCategoryChange
+              }
             >
               <option value="Arts & Theater">Arts & Theater</option>
               <option value="Business">Business</option>
               <option value="Fashion">Fashion</option>
               <option value="Music">Music</option>
               <option value="Sports">Sports</option>
-              <option value="Cinema">Cenima</option>
+              <option value="Cinema">Cinema</option>
             </select>
           </div>
           <div class="form-group">
@@ -124,8 +149,16 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Enter description"
-              value={this.state.description}
-              onChange={this.handleDescChange}
+              value={
+                this.props.edit
+                  ? this.props.value.description
+                  : this.state.description
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleDescEdit
+                  : this.handleDescChange
+              }
             />
           </div>
           <div class="form-group">
@@ -135,8 +168,16 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Starts At"
-              value={this.state.startsAt}
-              onChange={this.handleStartsChange}
+              value={
+                this.props.edit
+                  ? this.props.value.startsAt
+                  : this.state.startsAt
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleStartsEdit
+                  : this.handleStartsChange
+              }
             />
           </div>
           <div class="form-group">
@@ -146,8 +187,14 @@ class createEvent extends Component {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="Ends At"
-              value={this.state.endsAt}
-              onChange={this.handleEndsChange}
+              value={
+                this.props.edit ? this.props.value.endsAt : this.state.endsAt
+              }
+              onChange={
+                this.props.edit
+                  ? this.props.handleEndsEdit
+                  : this.handleEndsChange
+              }
             />
           </div>
           <TicketTiers
@@ -156,13 +203,23 @@ class createEvent extends Component {
             addTicket={this.addTicket}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="submit"
-              id="button-addon2"
-            >
-              Create Event
-            </button>
+            {this.props.edit ? (
+              <button
+                className="btn btn-outline-secondary"
+                type="submit"
+                id="button-addon2"
+              >
+                Edit Event
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-secondary"
+                type="submit"
+                id="button-addon2"
+              >
+                Create Event
+              </button>
+            )}
           </div>
         </form>
       </div>
@@ -170,4 +227,4 @@ class createEvent extends Component {
   }
 }
 
-export default createEvent;
+export default CreateEvent;

@@ -5,8 +5,9 @@ import SignUp from "../Signup/Signup";
 import HomePage from "../HomePage/HomePage";
 import AdminLogin from "../Admin/AdminLogin";
 import AdminHomepage from "../Admin/AdminHomePage";
-import createEvent from "../Events/createEvent";
+import createEvent from "../Events/CreateEvent";
 import EventDetails from "../Event/Event-details";
+import editEvent from "../Events/editEvent";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/signup" component={SignUp} />
         <Route path="/admin/create-event" component={createEvent} />
         <Route path="/event-details/:id" component={EventDetails} />
+        <Route path="/admin/edit-event/:id" component={editEvent} />
       </Switch>
     </router>
   );
