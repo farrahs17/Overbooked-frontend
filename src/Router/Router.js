@@ -5,7 +5,7 @@ import SignUp from "../Signup/Signup";
 import HomePage from "../HomePage/HomePage";
 import AdminLogin from "../Admin/AdminLogin";
 import AdminHomepage from "../Admin/AdminHomePage";
-import createEvent from "../Events/createEvent";
+import createEvent from "../Events/CreateEvent";
 import EventDetails from "../Event/Event-details";
 
 function Router() {
