@@ -14,7 +14,9 @@ const Event = ({ event, handleDelete }) => {
         cover={<img alt={event.title} src={event.image} />}
         actions={[
           <Icon type="delete" onClick={handleDelete} />,
-          <Icon type="edit" />,
+          <Link to={`/admin/edit-event/${event.id}`}>
+            <Icon type="edit" />
+          </Link>,
           <Link to={`/event-details/${event.id}`}>
             <Icon type="ellipsis" />
           </Link>
