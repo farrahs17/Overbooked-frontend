@@ -8,7 +8,7 @@ import Agenda from "./Agenda";
 
 class CreateEvent extends Component {
   state = {
-    image: "",
+    image: null,
     title: "",
     category: "Arts & Theater",
     description: "",
@@ -50,10 +50,13 @@ class CreateEvent extends Component {
     }
   };
 
-  handleImageChange = e => {
-    this.setState({
-      image: e.target.value
-    });
+  handleImageChange = event => {
+    this.setState(
+      {
+        image: event.target.files[0]
+      },
+      () => console.log(this.state.image)
+    );
   };
 
   handleTitleChange = e => {
@@ -86,9 +89,16 @@ class CreateEvent extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    const formData = new FormData();
+    formData.append("image", this.state.image);
+    formData.append("title", this.state.title);
+    formData.append("description", this.state.description);
+    formData.append("category", this.state.category);
+    formData.append("startsAt", this.state.startsAt);
+    formData.append("endsAt", this.state.endsAt);
+    formData.append("tickets", this.state.tickets);
     axios
-      .post(`http://localhost:8080/api/post-event`, this.state)
+      .post(`http://localhost:8080/api/post-event`, formData)
       .then(res => {
         console.log(res);
       })
@@ -114,19 +124,15 @@ class CreateEvent extends Component {
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Image</label>
                     <input
-                      type="text"
+                      type="file"
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter image"
-                      value={
-                        this.props.edit
-                          ? this.props.value.image
-                          : this.state.image
-                      }
+                      value={this.props.edit && this.props.value.image}
                       onChange={
                         this.props.edit
                           ? this.props.handleImageEdit
-                          : this.handleImageChange
+                          : e => this.handleImageChange(e)
                       }
                       name="image"
                     />
@@ -173,7 +179,7 @@ class CreateEvent extends Component {
                       <option value="Fashion">Fashion</option>
                       <option value="Music">Music</option>
                       <option value="Sports">Sports</option>
-                      <option value="Cinema">Cenima</option>
+                      <option value="Cinema">Cinema</option>
                     </select>
                   </div>
                   <div class="form-group">
