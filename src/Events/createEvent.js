@@ -210,7 +210,7 @@ class CreateEvent extends Component {
                       placeholder="Starts At"
                       value={
                         this.props.edit
-                          ? this.props.value.startsAt
+                          ? this.props.value.startsAt.split("T")[0]
                           : this.state.startsAt
                       }
                       onChange={
@@ -229,7 +229,7 @@ class CreateEvent extends Component {
                       placeholder="Ends At"
                       value={
                         this.props.edit
-                          ? this.props.value.endsAt
+                          ? this.props.value.endsAt.split("T")[0]
                           : this.state.endsAt
                       }
                       onChange={
