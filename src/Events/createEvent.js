@@ -8,7 +8,7 @@ import Agenda from "./Agenda";
 
 class CreateEvent extends Component {
   state = {
-    image: null,
+    image: "",
     title: "",
     category: "Arts & Theater",
     description: "",
@@ -21,6 +21,7 @@ class CreateEvent extends Component {
   handleTicketChange = e => {
     if (["type", "price"].includes(e.target.className)) {
       let tickets = [...this.state.tickets];
+      console.log(e.target.dataset.id);
       tickets[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ tickets }, () => console.log(this.state));
     } else {
@@ -44,16 +45,16 @@ class CreateEvent extends Component {
     if (["date", "time", "title"].includes(e.target.className)) {
       let agenda = [...this.state.agenda];
       agenda[e.target.dataset.id][e.target.className] = e.target.value;
-      this.setState({ agenda }, () => console.log(this.state));
+      this.setState({ agenda }, () => console.log(this.state.agenda));
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }
   };
 
-  handleImageChange = event => {
+  handleImageChange = e => {
     this.setState(
       {
-        image: event.target.files[0]
+        image: e.target.value
       },
       () => console.log(this.state.image)
     );
@@ -97,9 +98,11 @@ class CreateEvent extends Component {
     formData.append("startsAt", this.state.startsAt);
     formData.append("endsAt", this.state.endsAt);
     formData.append("tickets", this.state.tickets);
+    console.log(formData);
     axios
-      .post(`http://localhost:8080/api/post-event`, formData)
+      .post(`http://localhost:8080/api/post-event`, this.state)
       .then(res => {
+        console.log(formData);
         console.log(res);
       })
       .catch(err => console.log(err));
@@ -124,7 +127,7 @@ class CreateEvent extends Component {
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Image</label>
                     <input
-                      type="file"
+                      type="text"
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter image"
@@ -132,7 +135,7 @@ class CreateEvent extends Component {
                       onChange={
                         this.props.edit
                           ? this.props.handleImageEdit
-                          : e => this.handleImageChange(e)
+                          : this.handleImageChange
                       }
                       name="image"
                     />

@@ -17,9 +17,10 @@ const Agenda = props => {
                 type="text"
                 value={agenda.title}
                 onChange={handleAgendaChange}
-                name={agendaId}
+                name={titleId}
                 className="title"
                 id={titleId}
+                data-id={id}
               />
             </label>
             <label htmlFor="agenda-date">
@@ -39,7 +40,7 @@ const Agenda = props => {
                 type="time"
                 value={agenda.time}
                 onChange={handleAgendaChange}
-                name={agendaId}
+                name={timeId}
                 className="time"
                 data-id={id}
                 id={timeId}
