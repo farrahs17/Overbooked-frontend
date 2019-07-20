@@ -1,10 +1,10 @@
 import React from "react";
 
 const Agenda = props => {
-  let { agenda, handleAgendaChange, addAgenda } = props;
+  let { agendas, handleAgendaChange, addAgenda } = props;
   return (
     <div>
-      {agenda.map((val, id) => {
+      {agendas.map((val, id) => {
         let agendaId = `agenda-${id}`;
         let dateId = `date-${id}`;
         let timeId = `time-${id}`;
@@ -15,7 +15,6 @@ const Agenda = props => {
               Title
               <input
                 type="text"
-                value={agenda.title}
                 onChange={handleAgendaChange}
                 name={titleId}
                 className="title"
@@ -38,7 +37,6 @@ const Agenda = props => {
               Time
               <input
                 type="time"
-                value={agenda.time}
                 onChange={handleAgendaChange}
                 name={timeId}
                 className="time"

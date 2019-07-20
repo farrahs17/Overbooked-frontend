@@ -1,14 +1,15 @@
 import React from "react";
 
 class TicketTiers extends React.Component {
-  //   handleCategoryChange = e => {
-  //     this.setState({
-  //       category: e.target.value
-  //     });
-  //   };
-
   render() {
-    let { tickets, handleTicketChange, addTicket } = this.props;
+    let {
+      tickets,
+      handleTicketChange,
+      handleTicketEdit,
+      addTicket,
+      value,
+      edit
+    } = this.props;
     return (
       <div>
         {tickets.map((val, id) => {

@@ -8,10 +8,12 @@ const { Meta } = Card;
 
 const Event = ({ event, handleDelete }) => {
   return (
-    <div className="event" id={event.id}>
+    <div className="event-card" id={event.id}>
       <Card
         style={{ width: 300 }}
-        cover={<img alt={event.title} src={event.image} />}
+        cover={
+          <img alt={event.title} src={`http://localhost:8080/${event.image}`} />
+        }
         actions={[
           <Icon type="delete" onClick={handleDelete} />,
           <Link to={`/admin/edit-event/${event.id}`}>

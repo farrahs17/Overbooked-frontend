@@ -10,12 +10,12 @@ class CreateEvent extends Component {
   state = {
     image: "",
     title: "",
-    category: "Arts & Theater",
+    category: "Arts",
     description: "",
     startsAt: "",
     endsAt: "",
     tickets: [{ type: "Early Bird", price: 0 }],
-    agenda: [{ date: "", time: "", title: "" }]
+    agendas: [{ date: "", time: "", title: "" }]
   };
 
   handleTicketChange = e => {
@@ -37,13 +37,13 @@ class CreateEvent extends Component {
 
   addAgenda = e => {
     this.setState(prevState => ({
-      agenda: [...prevState.tickets, { date: "", time: "", title: "" }]
+      agendas: [...prevState.agendas, { date: "", time: "", title: "" }]
     }));
   };
 
   handleAgendaChange = e => {
     if (["date", "time", "title"].includes(e.target.className)) {
-      let agenda = [...this.state.agenda];
+      let agenda = [...this.state.agendas];
       agenda[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ agenda }, () => console.log(this.state.agenda));
     } else {
@@ -54,7 +54,7 @@ class CreateEvent extends Component {
   handleImageChange = e => {
     this.setState(
       {
-        image: e.target.value
+        image: e.target.files[0]
       },
       () => console.log(this.state.image)
     );
@@ -97,13 +97,15 @@ class CreateEvent extends Component {
     formData.append("category", this.state.category);
     formData.append("startsAt", this.state.startsAt);
     formData.append("endsAt", this.state.endsAt);
-    formData.append("tickets", this.state.tickets);
+    formData.append("tickets", JSON.stringify(this.state.tickets));
+    formData.append("agendas", JSON.stringify(this.state.agendas));
     console.log(formData);
     axios
-      .post(`http://localhost:8080/api/post-event`, this.state)
+      .post(`http://localhost:8080/api/post-event`, formData)
       .then(res => {
         console.log(formData);
         console.log(res);
+        this.props.history.push("/");
       })
       .catch(err => console.log(err));
   };
@@ -127,11 +129,10 @@ class CreateEvent extends Component {
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Image</label>
                     <input
-                      type="text"
+                      type="file"
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Enter image"
-                      value={this.props.edit && this.props.value.image}
                       onChange={
                         this.props.edit
                           ? this.props.handleImageEdit
@@ -177,7 +178,7 @@ class CreateEvent extends Component {
                           : this.handleCategoryChange
                       }
                     >
-                      <option value="Arts & Theater">Arts & Theater</option>
+                      <option value="Arts">Arts</option>
                       <option value="Business">Business</option>
                       <option value="Fashion">Fashion</option>
                       <option value="Music">Music</option>
@@ -253,8 +254,17 @@ class CreateEvent extends Component {
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
                   <TicketTiers
+                    value={
+                      this.props.edit
+                        ? this.props.value.tickets
+                        : this.state.tickets
+                    }
                     tickets={this.state.tickets}
-                    handleTicketChange={this.handleTicketChange}
+                    handleTicketChange={
+                      this.props.edit
+                        ? this.props.handleTicketEdit
+                        : this.handleTicketsChange
+                    }
                     addTicket={this.addTicket}
                   />
                 </Card.Body>
@@ -267,7 +277,7 @@ class CreateEvent extends Component {
               <Accordion.Collapse eventKey="2">
                 <Card.Body>
                   <Agenda
-                    agenda={this.state.agenda}
+                    agendas={this.state.agendas}
                     handleAgendaChange={this.handleAgendaChange}
                     addAgenda={this.addAgenda}
                   />
