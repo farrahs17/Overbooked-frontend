@@ -3,6 +3,7 @@ import axios from "axios";
 import Event from "../Event/Event";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
 // import { baseUrl } from "../baseUrl";
 class EventsList extends React.Component {
   state = {
@@ -42,39 +43,39 @@ class EventsList extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <ButtonGroup aria-label="Basic example">
-            <Button
-              onClick={() => this.handleCategoryChange("Artstheater")}
-              variant="secondary"
-            >
-              Arts & Theater
-            </Button>
-            <Button
-              onClick={() => this.handleCategoryChange("Business")}
-              variant="secondary"
-            >
-              Business
-            </Button>
-            <Button
-              onClick={() => this.handleCategoryChange("Music")}
-              variant="secondary"
-            >
-              Music
-            </Button>
-            <Button
-              onClick={() => this.handleCategoryChange("Sports")}
-              variant="secondary"
-            >
-              Sports
-            </Button>
-            <Button
-              onClick={() => this.handleCategoryChange("Cinema")}
-              variant="secondary"
-            >
-              Cinema
-            </Button>
-          </ButtonGroup>
+        <div className="category">
+          <Nav className="justify-content-center" activeKey="/home">
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Arts")}>
+                Arts
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Business")}>
+                Business
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Fashion")}>
+                Fashion
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Music")}>
+                Music
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Sports")}>
+                Sports
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => this.handleCategoryChange("Cinema")}>
+                Cinema
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
         </div>
         ;
         {this.state.events.map(event => {

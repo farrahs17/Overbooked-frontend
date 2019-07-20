@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import moment from "moment";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+
 class EventDetails extends Component {
   state = {
     id: "",
@@ -8,7 +16,8 @@ class EventDetails extends Component {
     category: "",
     description: "",
     startsAt: "",
-    endsAt: ""
+    endsAt: "",
+    agenda: [{ date: "", time: "", title: "" }]
   };
 
   componentDidMount() {
@@ -18,19 +27,51 @@ class EventDetails extends Component {
       console.log(event.data);
       this.setState(event.data);
     });
+
+    axios.get(`http://localhost:8080/api/get-agenda/${id}`).then(agenda => {
+      console.log(agenda.data);
+      this.setState({ agenda: agenda.data });
+    });
   }
   render() {
     return (
-      <div>
-        <img src={this.state.image} alt={this.state.title} />
-        <h1>Event Description</h1>
-        <h2>{this.state.title}</h2>
-        <h3>{this.state.category}</h3>
-        <p>{this.state.description}</p>
-        <h2>Date:</h2>
-        <p>Starts At:{this.state.startsAt}</p>
-        <p>Ends At:{this.state.endsAt}</p>
-      </div>
+      <Container>
+        <Row>
+          <Col></Col>
+          <Col xs={12} md={8}>
+            <Tabs
+              defaultActiveKey="Details"
+              id="uncontrolled-tab-example"
+              className="tabs"
+            >
+              <Tab eventKey="Details" title="Event Details">
+                <div className="event">
+                  <img
+                    className="event-image"
+                    src={`http://localhost:8080/${this.state.image}`}
+                    alt={this.state.title}
+                  />
+                  <h2>{this.state.title}</h2>
+                  <h3>{this.state.category}</h3>
+                  <p>{this.state.description}</p>
+                  <h4>Date:</h4>
+                  <p>
+                    Starts at: {moment(this.state.startsAt).format("MMM Do YY")}
+                  </p>
+                  <p>
+                    Ends at: {moment(this.state.endsAt).format("MMM Do YY")}
+                  </p>
+                  <Button>Buy Ticket</Button>
+                </div>
+              </Tab>
+              <Tab eventKey="agenda" title="Agenda">
+                <div></div>
+              </Tab>
+            </Tabs>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
     );
   }
 }

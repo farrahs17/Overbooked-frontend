@@ -1,13 +1,13 @@
 function saveToken(key, token) {
-  localStorage.setItem(key, token);
+  return localStorage.setItem(key, token);
 }
 
 function getToken() {
   return localStorage.getItem("token");
 }
 
-function clearToken(key) {
-  localStorage.removeItem(key);
+function clearToken() {
+  return localStorage.removeItem("token");
 }
 
 export { saveToken, getToken, clearToken };
