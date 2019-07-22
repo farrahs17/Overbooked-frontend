@@ -17,20 +17,19 @@ class EventDetails extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
-    agenda: [{ date: "", time: "", title: "" }]
+    agenda: []
   };
 
   componentDidMount() {
     const { id } = this.props.match.params;
 
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
-      console.log(event.data);
       this.setState(event.data);
     });
 
     axios.get(`http://localhost:8080/api/get-agenda/${id}`).then(agenda => {
-      console.log(agenda.data);
-      this.setState({ agenda: agenda.data });
+      this.setState({ agenda: agenda.data.agenda });
+      console.log(this.state.agenda);
     });
   }
   render() {
@@ -64,8 +63,19 @@ class EventDetails extends Component {
                   <Button>Buy Ticket</Button>
                 </div>
               </Tab>
+
               <Tab eventKey="agenda" title="Agenda">
-                <div></div>
+                <div>
+                  {this.state.agenda.map(agenda => {
+                    return (
+                      <div key={agenda.id}>
+                        <p>{agenda.title}</p>
+                        <p>{agenda.date}</p>
+                        <p>{agenda.time}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </Tab>
             </Tabs>
           </Col>
