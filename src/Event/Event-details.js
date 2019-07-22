@@ -28,11 +28,11 @@ class EventDetails extends Component {
     });
 
     axios.get(`http://localhost:8080/api/get-agenda/${id}`).then(agenda => {
-      this.setState({ agenda: agenda.data });
+      this.setState({ agenda: agenda.data.agenda });
+      console.log(this.state.agenda);
     });
   }
   render() {
-    const agenda = this.state.agenda;
     return (
       <Container>
         <Row>
@@ -66,17 +66,15 @@ class EventDetails extends Component {
 
               <Tab eventKey="agenda" title="Agenda">
                 <div>
-                  {this.state.agenda.length === 0 ? (
-                    <p>No agenda found</p>
-                  ) : (
-                    agenda.map(agenda => {
-                      return (
-                        <div key={agenda.id}>
-                          <p>{agenda.title}</p>
-                        </div>
-                      );
-                    })
-                  )}
+                  {this.state.agenda.map(agenda => {
+                    return (
+                      <div key={agenda.id}>
+                        <p>{agenda.title}</p>
+                        <p>{agenda.date}</p>
+                        <p>{agenda.time}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </Tab>
             </Tabs>
