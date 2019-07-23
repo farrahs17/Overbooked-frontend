@@ -4,13 +4,17 @@ import Event from "../Event/Event";
 import Nav from "react-bootstrap/Nav";
 import CardDeck from "react-bootstrap/CardDeck";
 import { Link } from "react-router-dom";
-// import { baseUrl } from "../baseUrl";
+import { getToken } from "../Utils/utils";
+import jwtDecode from "jwt-decode";
+
 class EventsList extends React.Component {
   state = {
     events: [],
-    category: ""
+    category: "",
+    isAdmin: false
   };
   componentDidMount() {
+    this.handleAdminLogin();
     axios.get(`http://localhost:8080/api/get-events`).then(response => {
       this.setState({
         events: response.data.events
@@ -18,6 +22,13 @@ class EventsList extends React.Component {
     });
   }
 
+  handleAdminLogin = () => {
+    const token = getToken();
+    const decoded = jwtDecode(token);
+    if (decoded.isAdmin) {
+      this.setState({ isAdmin: true });
+    }
+  };
   handleDelete = id => {
     axios
       .delete(`http://localhost:8080/api/edit-delete/${id}`)
@@ -41,6 +52,7 @@ class EventsList extends React.Component {
       });
   };
   render() {
+    console.log(this.state.isAdmin);
     return (
       <React.Fragment>
         <div className="category">
@@ -87,6 +99,7 @@ class EventsList extends React.Component {
                 <Event
                   event={event}
                   handleDelete={() => this.handleDelete(event.id)}
+                  isAdmin={this.state.isAdmin}
                 />
               </div>
             );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import CreateEvent from "./CreateEvent";
+import CreateEvent from "./createEvent";
 
 class editEvent extends Component {
   state = {
