@@ -47,7 +47,9 @@ const Agenda = props => {
           </div>
         );
       })}
-      <button onClick={addAgenda}>Add new slot</button>
+      <button onClick={addAgenda} type="button">
+        Add new slot
+      </button>
     </div>
   );
 };

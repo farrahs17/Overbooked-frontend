@@ -2,14 +2,7 @@ import React from "react";
 
 class TicketTiers extends React.Component {
   render() {
-    let {
-      tickets,
-      handleTicketChange,
-      handleTicketEdit,
-      addTicket,
-      value,
-      edit
-    } = this.props;
+    let { tickets, handleTicketChange, addTicket, value } = this.props;
     return (
       <div>
         {tickets.map((val, id) => {
@@ -45,7 +38,9 @@ class TicketTiers extends React.Component {
             </div>
           );
         })}
-        <button onClick={addTicket}>Add new ticket</button>
+        <button onClick={addTicket} type="button">
+          Add new ticket
+        </button>
       </div>
     );
   }

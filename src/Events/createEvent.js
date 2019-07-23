@@ -114,12 +114,7 @@ class CreateEvent extends Component {
     return (
       <Accordion defaultActiveKey="0">
         <div>
-          <form
-            onSubmit={
-              this.props.edit ? this.props.handleEditSubmit : this.handleSubmit
-            }
-            encType="multipart/form-data"
-          >
+          <form encType="multipart/form-data">
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0">
                 Event Details
@@ -254,17 +249,9 @@ class CreateEvent extends Component {
               <Accordion.Collapse eventKey="1">
                 <Card.Body>
                   <TicketTiers
-                    value={
-                      this.props.edit
-                        ? this.props.value.tickets
-                        : this.state.tickets
-                    }
+                    value={this.state.tickets}
                     tickets={this.state.tickets}
-                    handleTicketChange={
-                      this.props.edit
-                        ? this.props.handleTicketEdit
-                        : this.handleTicketsChange
-                    }
+                    handleTicketChange={this.handleTicketChange}
                     addTicket={this.addTicket}
                   />
                 </Card.Body>
@@ -296,7 +283,12 @@ class CreateEvent extends Component {
               ) : (
                 <button
                   className="btn btn-outline-secondary"
-                  type="submit"
+                  type="button"
+                  onClick={
+                    this.props.edit
+                      ? this.props.handleEditSubmit
+                      : this.handleSubmit
+                  }
                   id="button-addon2"
                 >
                   Create Event

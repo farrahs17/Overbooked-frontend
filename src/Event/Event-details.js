@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import { getToken } from "../Utils/utils";
 
 class EventDetails extends Component {
   state = {
@@ -60,7 +61,14 @@ class EventDetails extends Component {
                   <p>
                     Ends at: {moment(this.state.endsAt).format("MMM Do YY")}
                   </p>
-                  <Button>Buy Ticket</Button>
+                  {getToken() ? (
+                    <Button>Buy Ticket</Button>
+                  ) : (
+                    <div>
+                      <p>Please login to buy ticket</p>
+                      <Button disabled>Buy Ticket</Button>
+                    </div>
+                  )}
                 </div>
               </Tab>
 
