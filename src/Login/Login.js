@@ -57,7 +57,11 @@ class Login extends React.Component {
               name="password"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={this.props.isLoggedin}
+          >
             Login
           </Button>
         </div>

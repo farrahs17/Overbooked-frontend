@@ -9,14 +9,13 @@ class Header extends React.Component {
   state = {
     isLoggedin: false
   };
-
   componentDidMount() {
     if (getToken()) {
       this.setState({ isLoggedin: true });
     }
   }
-  handleLogout = token => {
-    clearToken(token);
+  handleLogout = () => {
+    clearToken("token");
     this.setState({ isLoggedin: false });
   };
   render() {
@@ -42,7 +41,7 @@ class Header extends React.Component {
             </Nav.Link>
           </Nav>
 
-          {!this.state.isLoggedin ? (
+          {!getToken() ? (
             <Nav className="login">
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/login">

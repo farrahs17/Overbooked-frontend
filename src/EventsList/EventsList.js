@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 import Event from "../Event/Event";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
+import CardDeck from "react-bootstrap/CardDeck";
+import { Link } from "react-router-dom";
 // import { baseUrl } from "../baseUrl";
 class EventsList extends React.Component {
   state = {
@@ -46,6 +46,9 @@ class EventsList extends React.Component {
         <div className="category">
           <Nav className="justify-content-center" activeKey="/home">
             <Nav.Item>
+              <Nav.Link href="/">All</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
               <Nav.Link onClick={() => this.handleCategoryChange("Arts")}>
                 Arts
               </Nav.Link>
@@ -77,18 +80,18 @@ class EventsList extends React.Component {
             </Nav.Item>
           </Nav>
         </div>
-        ;
-        {this.state.events.map(event => {
-          return (
-            <div className="event" id={event.id}>
-              <Event
-                event={event}
-                handleDelete={() => this.handleDelete(event.id)}
-              />
-            </div>
-          );
-        })}
-        ;
+        <CardDeck>
+          {this.state.events.map(event => {
+            return (
+              <div className="event" id={event.id}>
+                <Event
+                  event={event}
+                  handleDelete={() => this.handleDelete(event.id)}
+                />
+              </div>
+            );
+          })}
+        </CardDeck>
       </React.Fragment>
     );
   }

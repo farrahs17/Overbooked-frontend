@@ -8,8 +8,9 @@ import AdminHomepage from "../Admin/AdminHomePage";
 import CreateEvent from "../Events/CreateEvent";
 import EventDetails from "../Event/Event-details";
 import editEvent from "../Events/editEvent";
+import Checkout from "../Checkout/Checkout";
 
-function Router() {
+function Router(props) {
   return (
     <router>
       <Switch>
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/admin/create-event" component={CreateEvent} />
         <Route path="/event-details/:id" component={EventDetails} />
         <Route path="/admin/edit-event/:id" component={editEvent} />
+        <Route path="/checkout/:id" component={Checkout} />
       </Switch>
     </router>
   );
