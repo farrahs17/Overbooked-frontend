@@ -18,24 +18,24 @@ function Router(props) {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={Login} />
         <Route path="/admin/login" isAdmin={true} component={AdminLogin} />
-        <PrivateRoute
+        <Route
           path="/admin/homepage"
           isAdmin={true}
           component={AdminHomepage}
         />
         <Route path="/signup" component={SignUp} />
-        <PrivateRoute
+        <Route
           path="/admin/create-event"
           isAdmin={true}
           component={CreateEvent}
         />
-        <PrivateRoute path="/event-details/:id" component={EventDetails} />
-        <PrivateRoute
+        <Route path="/event-details/:id" component={EventDetails} />
+        <Route
           path="/admin/edit-event/:id"
           isAdmin={true}
           component={editEvent}
         />
-        <PrivateRoute path="/checkout/:id" component={Checkout} />
+        <Route path="/checkout/:id" component={Checkout} />
       </Switch>
     </router>
   );

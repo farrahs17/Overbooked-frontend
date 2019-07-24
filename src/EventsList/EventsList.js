@@ -3,7 +3,6 @@ import axios from "axios";
 import Event from "../Event/Event";
 import Nav from "react-bootstrap/Nav";
 import CardDeck from "react-bootstrap/CardDeck";
-import { Link } from "react-router-dom";
 import { getToken } from "../Utils/utils";
 import jwtDecode from "jwt-decode";
 
