@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Quantity from "./Quantity";
 
 class Checkout extends Component {
   state = {
@@ -14,33 +15,21 @@ class Checkout extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
-    tickets: [{ id: "", type: "", price: "", quantity: 0 }],
+    tickets: [{ id: "", type: "", price: "" }],
     total: 0
   };
-  handleIncQuan = i => {
-    this.setState({ tickets: this.state.tickets[i].quantity + 1 });
-  };
-  handleDecQuan = i => {
-    this.setState({ tickets: this.state.tickets[i].quantity - 1 });
-  };
 
-  //   renderingTickets() {
-  //     for (let i = 0; i < this.state.tickets.length; i++) {
-  //       return (
-  //         <div key={i}>
-  //           <p>{this.state.tickets[i].type}</p>
-  //           <p>{this.state.tickets[i].price}</p>
-  //           <button onClick={() => this.handleIncQuan(i)}>
-  //             <i class="fas fa-plus-circle"></i>
-  //           </button>
-  //           <p>{this.state.tickets[i].quantity}</p>
-  //           <button onClick={() => this.handleDecQuan(i)}>
-  //             <i class="fas fa-minus-circle"></i>
-  //           </button>
-  //         </div>
-  //       );
-  //     }
-  //   }
+  renderingTickets() {
+    for (let i = 0; i < this.state.tickets.length; i++) {
+      return (
+        <div key={i}>
+          <p>{this.state.tickets[i].type}</p>
+          <p>{this.state.tickets[i].price}</p>
+          <Quantity ticketId={this.state.tickets[i].id} />
+        </div>
+      );
+    }
+  }
   componentDidMount() {
     const { id } = this.props.match.params;
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
@@ -76,15 +65,9 @@ class Checkout extends Component {
                 {this.state.tickets.map((ticket, i) => {
                   return (
                     <div key={i}>
-                      <p>{ticket[i].type}</p>
-                      <p>{ticket[i].price}</p>
-                      <button onClick={() => this.handleIncQuan(i)}>
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                      <p>{ticket[i].quantity}</p>
-                      <button onClick={() => this.handleDecQuan(i)}>
-                        <i class="fas fa-minus-circle"></i>
-                      </button>
+                      <p>{ticket.type}</p>
+                      <p>{ticket.price}</p>
+                      <Quantity ticketId={ticket.id} eventId={this.state.id} />
                     </div>
                   );
                 })}
