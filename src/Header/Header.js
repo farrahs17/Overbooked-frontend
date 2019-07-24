@@ -72,6 +72,9 @@ class Header extends React.Component {
                 <Link to="/admin/create-event">
                   <Button className=" mt-2 ml-5">Create Event</Button>
                 </Link>
+                <Link to="/admin/get-users">
+                  <Button className=" mt-2 ml-5">Show Users</Button>
+                </Link>
               </Nav.Link>
             ) : null}
           </Nav>

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { getToken } from "../Utils/utils";
+import { Link } from "react-router-dom";
 
 class EventDetails extends Component {
   state = {
@@ -18,7 +19,7 @@ class EventDetails extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
-    agenda: []
+    agendas: []
   };
 
   componentDidMount() {
@@ -26,11 +27,6 @@ class EventDetails extends Component {
 
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
       this.setState(event.data);
-    });
-
-    axios.get(`http://localhost:8080/api/get-agenda/${id}`).then(agenda => {
-      this.setState({ agenda: agenda.data.agenda });
-      console.log(this.state.agenda);
     });
   }
   render() {
@@ -62,7 +58,9 @@ class EventDetails extends Component {
                     Ends at: {moment(this.state.endsAt).format("MMM Do YY")}
                   </p>
                   {getToken() ? (
-                    <Button>Buy Ticket</Button>
+                    <Link to={`/checkout/${this.state.id}`}>
+                      <Button>Buy Ticket</Button>
+                    </Link>
                   ) : (
                     <div>
                       <p>Please login to buy ticket</p>
@@ -74,7 +72,7 @@ class EventDetails extends Component {
 
               <Tab eventKey="agenda" title="Agenda">
                 <div>
-                  {this.state.agenda.map(agenda => {
+                  {this.state.agendas.map(agenda => {
                     return (
                       <div key={agenda.id}>
                         <p>{agenda.title}</p>

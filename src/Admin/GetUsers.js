@@ -1,0 +1,44 @@
+import React, { Component } from "react";
+import axios from "axios";
+import Table from "react-bootstrap/Table";
+
+class GetUsers extends Component {
+  state = {
+    users: []
+  };
+  componentDidMount() {
+    axios.get("http://localhost:8080/api/get-users").then(response => {
+      this.setState({
+        users: response.data.users
+      });
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Table striped bordered hover size="sm">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Username</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          {this.state.users.map(user => {
+            return (
+              <tbody>
+                <tr>
+                  <td>{user.id}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                </tr>
+              </tbody>
+            );
+          })}
+        </Table>
+      </div>
+    );
+  }
+}
+
+export default GetUsers;

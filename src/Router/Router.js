@@ -10,6 +10,7 @@ import EventDetails from "../Event/Event-details";
 import editEvent from "../Events/editEvent";
 import Checkout from "../Checkout/Checkout";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
+import GetUsers from "../Admin/GetUsers";
 
 function Router(props) {
   return (
@@ -36,6 +37,7 @@ function Router(props) {
           component={editEvent}
         />
         <Route path="/checkout/:id" component={Checkout} />
+        <Route path="/admin/get-users" component={GetUsers} />
       </Switch>
     </router>
   );
