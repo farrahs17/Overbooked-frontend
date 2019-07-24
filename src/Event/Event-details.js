@@ -18,7 +18,7 @@ class EventDetails extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
-    agenda: []
+    agendas: []
   };
 
   componentDidMount() {
@@ -26,11 +26,6 @@ class EventDetails extends Component {
 
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
       this.setState(event.data);
-    });
-
-    axios.get(`http://localhost:8080/api/get-agenda/${id}`).then(agenda => {
-      this.setState({ agenda: agenda.data.agenda });
-      console.log(this.state.agenda);
     });
   }
   render() {
@@ -74,7 +69,7 @@ class EventDetails extends Component {
 
               <Tab eventKey="agenda" title="Agenda">
                 <div>
-                  {this.state.agenda.map(agenda => {
+                  {this.state.agendas.map(agenda => {
                     return (
                       <div key={agenda.id}>
                         <p>{agenda.title}</p>
