@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { getToken } from "../Utils/utils";
 
 class Quantity extends Component {
   state = {
-    ticketId: "",
+    ticketId: this.props.ticketId,
     quantity: 0
   };
 
@@ -25,12 +26,20 @@ class Quantity extends Component {
       console.log(this.state.quantity)
     );
     console.log(this.state.quantity);
-    // axios
-    //   .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => console.log(err));
+    axios
+      .post(
+        `http://localhost:8080/api/checkout/${id}/add`,
+        { quantity: this.state.quantity, ticketId: this.props.ticketId },
+        {
+          headers: {
+            Authorization: "Bearer " + getToken()
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   };
   handleDecQuan = () => {
     this.setState({ quantity: this.state.quantity-- });
