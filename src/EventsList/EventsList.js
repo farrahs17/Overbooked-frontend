@@ -1,13 +1,13 @@
 import React from "react";
 import axios from "axios";
 import Event from "../Event/Event";
-import Nav from "react-bootstrap/Nav";
 import CardDeck from "react-bootstrap/CardDeck";
 import { getToken } from "../Utils/utils";
 import jwtDecode from "jwt-decode";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import FilterEvents from "./FilterEvents";
 
 function searchingFor(term) {
   return function(x) {
@@ -67,6 +67,10 @@ class EventsList extends React.Component {
     console.log(this.state.isAdmin);
     return (
       <React.Fragment>
+        <FilterEvents
+          handleCategoryChange={this.handleCategoryChange}
+          category={this.state.category}
+        />
         <InputGroup className="mb-3 mt-5 search-input">
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">Search</InputGroup.Text>
@@ -80,44 +84,7 @@ class EventsList extends React.Component {
           />
         </InputGroup>
 
-        <div className="category">
-          <Nav className="justify-content-center" activeKey="/home">
-            <Nav.Item>
-              <Nav.Link href="/">All</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Arts")}>
-                Arts
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Business")}>
-                Business
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Fashion")}>
-                Fashion
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Music")}>
-                Music
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Sports")}>
-                Sports
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link onClick={() => this.handleCategoryChange("Cinema")}>
-                Cinema
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </div>
-        <CardDeck>
+        <CardDeck className="card-deck">
           {this.state.events
             .filter(searchingFor(this.state.term))
             .map(event => {

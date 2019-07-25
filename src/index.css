@@ -1432,12 +1432,16 @@
   padding: 20px;
 }
 
-.event {
-  margin-top: 3%;
+.card-deck {
+  margin-right: 0;
+  padding: 0 3%;
+}
+.card-deck .event {
   margin-bottom: 3%;
   padding: 2%;
 }
-.event-image {
+.card-deck .event-image {
+  min-height: 400px;
   max-width: 400px;
   max-height: 400px;
 }

@@ -8,7 +8,11 @@ const Event = ({ event, handleDelete, isAdmin }) => {
   return (
     <Card style={{ width: "20rem" }} id={event.id}>
       <Link to={`/event-details/${event.id}`} className="card-link">
-        <Card.Img variant="top" src={`http://localhost:8080/${event.image}`} />
+        <Card.Img
+          className="event-image"
+          variant="top"
+          src={`http://localhost:8080/${event.image}`}
+        />
       </Link>
       <Card.Body>
         <Link to={`/event-details/${event.id}`}>
@@ -26,15 +30,15 @@ const Event = ({ event, handleDelete, isAdmin }) => {
 
         {isAdmin ? (
           <>
-            <Button variant="secondary" size="sm" onClick={handleDelete}>
+            <Card.Link variant="secondary" size="sm" onClick={handleDelete}>
               Delete
-            </Button>
-            <Button variant="secondary" size="sm">
+            </Card.Link>
+            <Card.Link variant="secondary" size="sm">
               <Link to={`/admin/edit-event/${event.id}`}>Edit</Link>
-            </Button>
+            </Card.Link>
           </>
         ) : (
-          <Button variant="primary">Buy Ticket</Button>
+          <Card.Link variant="primary">Buy Ticket</Card.Link>
         )}
       </Card.Body>
     </Card>

@@ -5,7 +5,7 @@ import SignUp from "../Signup/Signup";
 import HomePage from "../HomePage/HomePage";
 import AdminLogin from "../Admin/AdminLogin";
 import AdminHomepage from "../Admin/AdminHomePage";
-import CreateEvent from "../Events/createEvent";
+import CreateEvent from "../Events/CreateEvent";
 import EventDetails from "../Event/Event-details";
 import editEvent from "../Events/editEvent";
 import Checkout from "../Checkout/Checkout";
