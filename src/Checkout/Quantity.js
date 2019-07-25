@@ -3,17 +3,13 @@ import axios from "axios";
 
 class Quantity extends Component {
   state = {
-    tickets: [
-      {
-        ticketId: null,
-        quantity: 0
-      }
-    ]
+    ticketId: "",
+    quantity: 0
   };
 
   componentDidMount() {
     this.setState({ ticketId: this.props.ticketId });
-    // console.log(this.state.ticketId);
+    console.log(`current ticket id  ${this.state.ticketId}`);
     //   axios
     //   .post(`http://localhost:8080/api/checkout/${id}`, this.state)
     //   .then(res => {
@@ -24,18 +20,20 @@ class Quantity extends Component {
   handleIncQuan = () => {
     const id = this.props.ticketId;
     console.log(id);
-    this.setState({ quantity: this.state.quantity + 1 });
+    this.setState(
+      { quantity: this.state.quantity + 1 },
+      console.log(this.state.quantity)
+    );
     console.log(this.state.quantity);
-
-    axios
-      .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    // axios
+    //   .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => console.log(err));
   };
   handleDecQuan = () => {
-    this.setState({ quantity: this.state.quantity - 1 });
+    this.setState({ quantity: this.state.quantity-- });
   };
   render() {
     // console.log(this.state.ticketId);
