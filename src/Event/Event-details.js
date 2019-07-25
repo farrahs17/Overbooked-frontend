@@ -19,6 +19,7 @@ class EventDetails extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
+    tickets: [{ id: "", type: "", price: "" }],
     agendas: []
   };
 
@@ -26,6 +27,7 @@ class EventDetails extends Component {
     const { id } = this.props.match.params;
 
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
+      console.log(event.data);
       this.setState(event.data);
     });
   }
@@ -57,6 +59,14 @@ class EventDetails extends Component {
                   <p>
                     Ends at: {moment(this.state.endsAt).format("MMM Do YY")}
                   </p>
+                  {/* {this.state.tickets.map(ticket => {
+                    return (
+                      <div>
+                        <p>Ticket type: {ticket.type}</p>
+                        <p>Price: {ticket.price}</p>
+                      </div>
+                    );
+                  })} */}
                   {getToken() ? (
                     <Link to={`/checkout/${this.state.id}`}>
                       <Button>Buy Ticket</Button>

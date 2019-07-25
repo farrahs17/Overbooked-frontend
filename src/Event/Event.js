@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 const Event = ({ event, handleDelete, isAdmin }) => {
   return (
@@ -25,15 +26,15 @@ const Event = ({ event, handleDelete, isAdmin }) => {
 
         {isAdmin ? (
           <>
-            <Card.Link variant="primary" onClick={handleDelete}>
+            <Button variant="secondary" size="sm" onClick={handleDelete}>
               Delete
-            </Card.Link>
-            <Card.Link variant="primary">
+            </Button>
+            <Button variant="secondary" size="sm">
               <Link to={`/admin/edit-event/${event.id}`}>Edit</Link>
-            </Card.Link>
+            </Button>
           </>
         ) : (
-          <Card.Link variant="primary">Buy Ticket</Card.Link>
+          <Button variant="primary">Buy Ticket</Button>
         )}
       </Card.Body>
     </Card>

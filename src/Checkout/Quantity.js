@@ -13,6 +13,7 @@ class Quantity extends Component {
 
   componentDidMount() {
     this.setState({ ticketId: this.props.ticketId });
+    // console.log(this.state.ticketId);
     //   axios
     //   .post(`http://localhost:8080/api/checkout/${id}`, this.state)
     //   .then(res => {
@@ -21,9 +22,11 @@ class Quantity extends Component {
     //   .catch(err => console.log(err));
   }
   handleIncQuan = () => {
-    const id = this.state.ticketId;
+    const id = this.props.ticketId;
     console.log(id);
     this.setState({ quantity: this.state.quantity + 1 });
+    console.log(this.state.quantity);
+
     axios
       .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
       .then(res => {
@@ -35,7 +38,7 @@ class Quantity extends Component {
     this.setState({ quantity: this.state.quantity - 1 });
   };
   render() {
-    console.log(this.state.ticketId);
+    // console.log(this.state.ticketId);
     return (
       <div>
         <button onClick={this.handleIncQuan}>

@@ -19,17 +19,17 @@ class Checkout extends Component {
     total: 0
   };
 
-  renderingTickets() {
-    for (let i = 0; i < this.state.tickets.length; i++) {
-      return (
-        <div key={i}>
-          <p>{this.state.tickets[i].type}</p>
-          <p>{this.state.tickets[i].price}</p>
-          <Quantity ticketId={this.state.tickets[i].id} />
-        </div>
-      );
-    }
-  }
+  // renderingTickets() {
+  //   for (let i = 0; i < this.state.tickets.length; i++) {
+  //     return (
+  //       <div key={i}>
+  //         <p>{this.state.tickets[i].type}</p>
+  //         <p>{this.state.tickets[i].price}</p>
+  //         <Quantity ticketId={this.state.tickets[i].id} />
+  //       </div>
+  //     );
+  //   }
+  // }
   componentDidMount() {
     const { id } = this.props.match.params;
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
@@ -37,7 +37,7 @@ class Checkout extends Component {
     });
   }
   render() {
-    console.log(this.state.tickets);
+    // console.log(this.state.tickets);
     return (
       <div>
         <h2>Checkout</h2>
