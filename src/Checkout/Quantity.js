@@ -3,12 +3,8 @@ import axios from "axios";
 
 class Quantity extends Component {
   state = {
-    tickets: [
-      {
-        ticketId: null,
-        quantity: 0
-      }
-    ]
+    ticketId: null,
+    quantity: 0
   };
 
   componentDidMount() {
@@ -24,12 +20,12 @@ class Quantity extends Component {
     const id = this.state.ticketId;
     console.log(id);
     this.setState({ quantity: this.state.quantity + 1 });
-    axios
-      .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err));
+    // axios
+    //   .post(`http://localhost:8080/api/checkout/${id}/add`, this.state.quantity)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => console.log(err));
   };
   handleDecQuan = () => {
     this.setState({ quantity: this.state.quantity - 1 });
