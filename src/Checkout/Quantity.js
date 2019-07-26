@@ -9,7 +9,6 @@ class Quantity extends Component {
   };
 
   componentDidMount() {
-    this.setState({ ticketId: this.props.ticketId });
     console.log(`current ticket id  ${this.state.ticketId}`);
     //   axios
     //   .post(`http://localhost:8080/api/checkout/${id}`, this.state)
@@ -21,14 +20,43 @@ class Quantity extends Component {
   handleIncQuan = () => {
     const id = this.props.ticketId;
     console.log(id);
-    this.setState(
-      { quantity: this.state.quantity + 1 },
-      console.log(this.state.quantity)
-    );
+    this.setState(state => {
+      return { quantity: state.quantity + 1 };
+    });
+    let quantity = this.state.quantity + 1;
     console.log(this.state.quantity);
     axios
       .post(
         `http://localhost:8080/api/checkout/${id}/add`,
+        { quantity: quantity, ticketId: this.props.ticketId },
+        {
+          headers: {
+            Authorization: "Bearer " + getToken()
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  };
+
+  handleDecQuan = () => {
+    const id = this.props.ticketId;
+
+    let quantity;
+    if (this.state.quantity === 0) {
+      quantity = 0;
+    } else {
+      quantity--;
+    }
+    console.log(quantity);
+    this.setState(state => {
+      return { quantity: this.state.quantity - 1 };
+    });
+    axios
+      .post(
+        `http://localhost:8080/api/checkout/${id}/subtract`,
         { quantity: this.state.quantity, ticketId: this.props.ticketId },
         {
           headers: {
@@ -41,9 +69,7 @@ class Quantity extends Component {
       })
       .catch(err => console.log(err));
   };
-  handleDecQuan = () => {
-    this.setState({ quantity: this.state.quantity-- });
-  };
+
   render() {
     // console.log(this.state.ticketId);
     return (

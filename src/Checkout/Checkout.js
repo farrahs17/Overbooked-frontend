@@ -64,21 +64,21 @@ class Checkout extends Component {
                     <div key={i}>
                       <p>{ticket.type}</p>
                       <p>{ticket.price}</p>
-                      {console.log(ticket.id[i])}
-                      <Quantity ticketId={ticket.id} eventId={this.state.id} />
+
+                      <Quantity ticketId={ticket.id} />
                     </div>
                   );
                 })}
 
                 <h3>Total price: ${this.state.total}</h3>
               </div>
-              <div>
+              {/* <div>
                 <StripeCheckout
                   stripeKey="pk_test_xajy240BrWgEH5FtU8wAP1OU00cxMY3iJY"
                   token={this.onToken}
                   amount=""
                 />
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>
