@@ -14,6 +14,9 @@ class AdminLogin extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (!this.state.email || !this.state.password) {
+      return toast("Required Fields are empty", { type: "error" });
+    }
     axios
       .post(`http://localhost:8080/api/login-admin`, {
         email: this.state.email,
@@ -48,7 +51,7 @@ class AdminLogin extends React.Component {
         <Form onSubmit={this.handleSubmit} className="form-container">
           <div className="form-outline">
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Email address *</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -58,7 +61,7 @@ class AdminLogin extends React.Component {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Password *</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"

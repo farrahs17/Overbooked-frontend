@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateEvent from "./CreateEvent";
-import Header from "../Header/Header";
 
 class editEvent extends Component {
   state = {
@@ -95,8 +94,6 @@ class editEvent extends Component {
     }
     return (
       <div>
-        <Header />
-
         <div>
           <CreateEvent
             value={this.state.event}

@@ -43,6 +43,7 @@ class Router extends Component {
           <PrivateRoute path="/checkout/:id" User={Checkout} />
           <PrivateRoute
             path="/admin/get-users"
+            isAdmin={true}
             Admin={GetUsers}
             User={HomePage}
           />

@@ -114,194 +114,191 @@ class CreateEvent extends Component {
   render() {
     return (
       <div>
-        <Header/>
-      
-      <Accordion defaultActiveKey="0">
-        <div>
-          <form encType="multipart/form-data">
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0">
-                Event Details
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Image</label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Enter image"
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleImageEdit
-                          : this.handleImageChange
-                      }
-                      name="image"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">title</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Enter title"
-                      value={
-                        this.props.edit
-                          ? this.props.value.title
-                          : this.state.title
-                      }
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleTitleEdit
-                          : this.handleTitleChange
-                      }
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Category</label>
-                    <select
-                      type="text"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Enter category"
-                      value={
-                        this.props.edit
-                          ? this.props.value.category
-                          : this.state.category
-                      }
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleCategoryEdit
-                          : this.handleCategoryChange
-                      }
-                    >
-                      <option value="Arts">Arts</option>
-                      <option value="Business">Business</option>
-                      <option value="Fashion">Fashion</option>
-                      <option value="Music">Music</option>
-                      <option value="Sports">Sports</option>
-                      <option value="Cinema">Cinema</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Description</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Enter description"
-                      value={
-                        this.props.edit
-                          ? this.props.value.description
-                          : this.state.description
-                      }
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleDescEdit
-                          : this.handleDescChange
-                      }
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Starts At:</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Starts At"
-                      value={
-                        this.props.edit
-                          ? this.props.value.startsAt.split("T")[0]
-                          : this.state.startsAt
-                      }
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleStartsEdit
-                          : this.handleStartsChange
-                      }
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Ends At:</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Ends At"
-                      value={
-                        this.props.edit
-                          ? this.props.value.endsAt.split("T")[0]
-                          : this.state.endsAt
-                      }
-                      onChange={
-                        this.props.edit
-                          ? this.props.handleEndsEdit
-                          : this.handleEndsChange
-                      }
-                    />
-                  </div>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
+        <Header />
 
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="1">
-                Tickets
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="1">
-                <Card.Body>
-                  <TicketTiers
-                    value={this.state.tickets}
-                    tickets={this.state.tickets}
-                    handleTicketChange={this.handleTicketChange}
-                    addTicket={this.addTicket}
-                  />
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="2">
-                Agenda
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey="2">
-                <Card.Body>
-                  <Agenda
-                    agendas={this.state.agendas}
-                    handleAgendaChange={this.handleAgendaChange}
-                    addAgenda={this.addAgenda}
-                  />
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <div className="input-group-append">
-              {this.props.edit ? (
-                <button
-                  className="btn btn-outline-secondary"
-                  type="submit"
-                  id="button-addon2"
-                >
-                  Edit Event
-                </button>
-              ) : (
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  onClick={
-                    this.props.edit
-                      ? this.props.handleEditSubmit
-                      : this.handleSubmit
-                  }
-                  id="button-addon2"
-                >
-                  Create Event
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-      </Accordion>
+        <Accordion defaultActiveKey="0">
+          <div>
+            <form encType="multipart/form-data">
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                  Event Details
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Image</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Enter image"
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleImageEdit
+                            : this.handleImageChange
+                        }
+                        name="image"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">title</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Enter title"
+                        value={
+                          this.props.edit
+                            ? this.props.value.title
+                            : this.state.title
+                        }
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleTitleEdit
+                            : this.handleTitleChange
+                        }
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Category</label>
+                      <select
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Enter category"
+                        value={
+                          this.props.edit
+                            ? this.props.value.category
+                            : this.state.category
+                        }
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleCategoryEdit
+                            : this.handleCategoryChange
+                        }
+                      >
+                        <option value="Arts">Arts</option>
+                        <option value="Business">Business</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Music">Music</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Cinema">Cinema</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Description</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Enter description"
+                        value={
+                          this.props.edit
+                            ? this.props.value.description
+                            : this.state.description
+                        }
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleDescEdit
+                            : this.handleDescChange
+                        }
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Starts At:</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Starts At"
+                        value={
+                          this.props.edit
+                            ? this.props.value.startsAt.split("T")[0]
+                            : this.state.startsAt
+                        }
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleStartsEdit
+                            : this.handleStartsChange
+                        }
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Ends At:</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Ends At"
+                        value={
+                          this.props.edit
+                            ? this.props.value.endsAt.split("T")[0]
+                            : this.state.endsAt
+                        }
+                        onChange={
+                          this.props.edit
+                            ? this.props.handleEndsEdit
+                            : this.handleEndsChange
+                        }
+                      />
+                    </div>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="1">
+                  Tickets
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="1">
+                  <Card.Body>
+                    <TicketTiers
+                      value={this.state.tickets}
+                      tickets={this.state.tickets}
+                      handleTicketChange={this.handleTicketChange}
+                      addTicket={this.addTicket}
+                    />
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="2">
+                  Agenda
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="2">
+                  <Card.Body>
+                    <Agenda
+                      agendas={this.state.agendas}
+                      handleAgendaChange={this.handleAgendaChange}
+                      addAgenda={this.addAgenda}
+                    />
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <div className="input-group-append">
+                {this.props.edit ? (
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="submit"
+                    id="button-addon2"
+                    onClick={this.props.handleEditSubmit}
+                  >
+                    Edit Event
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    onClick={this.handleSubmit}
+                    id="button-addon2"
+                  >
+                    Create Event
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        </Accordion>
       </div>
     );
   }
