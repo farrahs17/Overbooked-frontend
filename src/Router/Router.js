@@ -11,9 +11,6 @@ import Checkout from "../Checkout/Checkout";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import GetUsers from "../Admin/GetUsers";
 import React, { Component } from "react";
-import PrivR from "../PrivateRoutes/privR";
-import { getToken } from "../Utils/utils";
-import jwtDecode from "jwt-decode";
 
 class Router extends Component {
   render() {
@@ -51,16 +48,6 @@ class Router extends Component {
           />
         </Switch>
       </router>
-    );
-  }
-}
-
-class FakeComp extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hi</h1>
-      </div>
     );
   }
 }
