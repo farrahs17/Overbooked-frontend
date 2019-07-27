@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Quantity from "./Quantity";
 import StripeCheckout from "react-stripe-checkout";
+import { getToken } from "../Utils/utils";
 
 class Checkout extends Component {
   state = {
@@ -19,7 +20,9 @@ class Checkout extends Component {
     tickets: [{ id: "", type: "", price: "" }],
     total: 0
   };
-
+  handleTotal = total => {
+    this.setState({ total: total });
+  };
   onToken = (token, addresses) => {
     // TODO: Send the token information and any other
     // relevant information to your payment process
@@ -32,6 +35,15 @@ class Checkout extends Component {
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
       this.setState(event.data);
     });
+    // axios
+    //   .get(`http://localhost:8080/api/checkout/${id}`, {
+    //     headers: {
+    //       Authorization: "Bearer " + getToken()
+    //     }
+    //   })
+    //   .then(event => {
+    //     console.log("========" + event.data);
+    //   });
   }
   render() {
     // console.log(this.state.tickets);
@@ -63,9 +75,13 @@ class Checkout extends Component {
                   return (
                     <div key={i}>
                       <p>{ticket.type}</p>
-                      <p>{ticket.price}</p>
+                      <p>${ticket.price}</p>
 
-                      <Quantity ticketId={ticket.id} />
+                      <Quantity
+                        ticketId={ticket.id}
+                        eventId={this.state.id}
+                        total={this.handleTotal}
+                      />
                     </div>
                   );
                 })}

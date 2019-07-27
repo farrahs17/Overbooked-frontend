@@ -7,15 +7,32 @@ class Quantity extends Component {
     ticketId: this.props.ticketId,
     quantity: 0
   };
-
+  handleTotal = () => {
+    this.props.total("total");
+  };
   componentDidMount() {
+    this.handleTotal();
     console.log(`current ticket id  ${this.state.ticketId}`);
-    //   axios
-    //   .post(`http://localhost:8080/api/checkout/${id}`, this.state)
-    //   .then(res => {
-    //       console.log(res);
-    //   })
-    //   .catch(err => console.log(err));
+    axios
+      .get(
+        `http://localhost:8080/api/checkout/${this.props.eventId}`,
+
+        {
+          params: {
+            ticketId: this.state.ticketId,
+            quantity: this.state.quantity
+          },
+
+          headers: {
+            Authorization: "Bearer " + getToken()
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+        this.props.total(res.data);
+      })
+      .catch(err => console.log(err));
   }
   handleIncQuan = () => {
     const id = this.props.ticketId;
@@ -27,8 +44,12 @@ class Quantity extends Component {
     console.log(this.state.quantity);
     axios
       .post(
-        `http://localhost:8080/api/checkout/${id}/add`,
-        { quantity: quantity, ticketId: this.props.ticketId },
+        `http://localhost:8080/api/checkout/${this.props.eventId}/add`,
+        {
+          quantity: quantity,
+          ticketId: this.props.ticketId,
+          eventId: this.props.eventId
+        },
         {
           headers: {
             Authorization: "Bearer " + getToken()
