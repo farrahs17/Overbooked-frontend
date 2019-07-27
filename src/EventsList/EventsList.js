@@ -32,8 +32,8 @@ class EventsList extends React.Component {
 
   handleAdminLogin = () => {
     const token = getToken();
-    const decoded = jwtDecode(token);
-    if (decoded.isAdmin) {
+    const decoded = token ? jwtDecode(token) : null;
+    if (decoded && decoded.isAdmin) {
       this.setState({ isAdmin: true });
     }
   };

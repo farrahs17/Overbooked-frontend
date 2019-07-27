@@ -24,10 +24,11 @@ class Header extends React.Component {
     // console.log(this.state.isAdmin);
     // console.log(this.state.isLoggedin);
     // this.handleAdminLogin();
+
     if (getToken()) {
       // this.setState({ isLoggedin: true });
       const token = getToken();
-      const decoded = token && jwtDecode(token);
+      const decoded = token ? jwtDecode(token) : null;
       console.log(decoded.isAdmin);
       if (decoded && decoded.isAdmin) {
         this.setState({ isAdmin: true, isLoggedin: true });
