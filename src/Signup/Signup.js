@@ -4,6 +4,8 @@ import { baseUrl } from "../baseUrl";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Header from "../Header/Header";
+import validator from "validator";
+import { toast } from "react-toastify";
 
 class SignUp extends React.Component {
   state = {
@@ -15,21 +17,23 @@ class SignUp extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.password === this.passwordVerification) {
-      axios
-        .post(`${baseUrl}/api/signup`, {
-          email: this.state.email,
-          username: this.state.username,
-          password: this.state.password
-        })
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-          this.props.history.push("/login");
-        });
-    } else {
-      new Error("Passwords do not match");
+    if (!validator.isEmail(this.state.email)) {
+      return toast("Email is invalid", { type: "warning" });
     }
+    if (!validator.isLength(this.state.password, { min: 8 })) {
+      return toast("Password must be 8 characters", { type: "warning" });
+    }
+    axios
+      .post(`${baseUrl}/api/signup`, {
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        this.props.history.push("/login");
+      });
   };
 
   handleUsernameChange = e => {
@@ -106,8 +110,10 @@ class SignUp extends React.Component {
                 name="email"
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
+
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -115,7 +121,6 @@ class SignUp extends React.Component {
                 name="email"
               />
             </Form.Group>
-
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control

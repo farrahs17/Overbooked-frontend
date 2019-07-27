@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { baseUrl } from "../baseUrl";
 import Header from "../Header/Header";
-
+import { toast } from "react-toastify";
 class AdminLogin extends React.Component {
   state = {
     email: "",
@@ -23,6 +23,11 @@ class AdminLogin extends React.Component {
         console.log(res.data.token);
         saveToken("token", res.data.token);
         this.props.history.push("/admin/homepage");
+        toast("Admin Logged in successfully", { type: "success" });
+      })
+      .catch(res => {
+        toast(res.response.data.message, { type: "error" });
+        console.log(res.response.data.message);
       });
   };
 

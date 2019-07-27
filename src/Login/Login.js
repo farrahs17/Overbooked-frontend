@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import { baseUrl } from "./../baseUrl";
 import Header from "../Header/Header";
 
+import { toast } from "react-toastify";
+
 class Login extends React.Component {
   state = {
     email: "",
@@ -23,6 +25,11 @@ class Login extends React.Component {
         console.log(res.data.token);
         saveToken("token", res.data.token);
         this.props.history.push("/");
+        toast("Logged in successfully", { type: "success" });
+      })
+      .catch(res => {
+        toast(res.response.data.message, { type: "error" });
+        console.log(res.response.data.message);
       });
   };
 
