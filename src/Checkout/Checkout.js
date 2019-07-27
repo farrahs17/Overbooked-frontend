@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Quantity from "./Quantity";
 import StripeCheckout from "react-stripe-checkout";
+import Header from "../Header/Header";
 
 class Checkout extends Component {
   state = {
@@ -37,6 +38,7 @@ class Checkout extends Component {
     // console.log(this.state.tickets);
     return (
       <div>
+        <Header />
         <h2>Checkout</h2>
         <Container>
           <Row>

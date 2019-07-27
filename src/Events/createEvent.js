@@ -5,6 +5,7 @@ import TicketTiers from "./ticketTiers";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Agenda from "./Agenda";
+import Header from "../Header/Header";
 
 class CreateEvent extends Component {
   state = {
@@ -112,6 +113,9 @@ class CreateEvent extends Component {
 
   render() {
     return (
+      <div>
+        <Header/>
+      
       <Accordion defaultActiveKey="0">
         <div>
           <form encType="multipart/form-data">
@@ -298,6 +302,7 @@ class CreateEvent extends Component {
           </form>
         </div>
       </Accordion>
+      </div>
     );
   }
 }

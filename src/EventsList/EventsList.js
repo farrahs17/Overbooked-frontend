@@ -8,6 +8,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import FilterEvents from "./FilterEvents";
+import Header from "../Header/Header";
 
 function searchingFor(term) {
   return function(x) {
@@ -67,6 +68,7 @@ class EventsList extends React.Component {
     console.log(this.state.isAdmin);
     return (
       <React.Fragment>
+        <Header />
         <FilterEvents
           handleCategoryChange={this.handleCategoryChange}
           category={this.state.category}
