@@ -1436,22 +1436,83 @@
   margin-right: 0;
   padding: 0 3%;
 }
-.card-deck .event {
-  margin-bottom: 3%;
-  padding: 2%;
-}
-.card-deck .event-image {
+
+.event-details-image {
+  margin-top: 8%;
   min-height: 400px;
   max-width: 400px;
   max-height: 400px;
 }
 
-.tabs {
+.tab-container {
   margin-top: 3%;
+}
+.tab-container .nav-tabs {
+  border-color: #fa7268;
+}
+.tab-container .nav-tabs a {
+  color: #fa7268;
+}
+.tab-container .nav-tabs .nav-link {
+  border: 1px solid transparent;
+}
+.tab-container .nav-tabs .active {
+  border-color: #fa7268;
+  border-bottom: none;
+}
+.tab-container .event-details-content {
+  margin: 3%;
+}
+.tab-container .event-details-content h4 {
+  font-size: 20px;
+  color: grey;
+}
+.tab-container .event-details-content .event-time {
+  font-size: 14px;
+}
+.tab-container .event-details-content .agenda {
+  display: inline;
+  direction: row;
 }
 
 .card-link {
   text-decoration: none;
+}
+
+.btn-filled {
+  background-color: #fa7268;
+  border-color: #fa7268;
+}
+
+button:hover {
+  border-color: #fa7268 !important;
+  background-color: #f1554a !important;
+}
+
+button:active {
+  background-color: #f1554a !important;
+  border-color: #fa7268 !important;
+}
+
+.checkout h2 {
+  margin-left: 3%;
+  margin-top: 1%;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+.ticket .quantity i {
+  color: #fa7268;
+}
+.ticket .quantity p {
+  margin: 0;
 }
 
 /*# sourceMappingURL=index.css.map */

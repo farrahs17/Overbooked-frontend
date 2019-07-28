@@ -12,7 +12,6 @@ import { getToken } from "../Utils/utils";
 
 import Header from "../Header/Header";
 
-
 class Checkout extends Component {
   state = {
     id: "",
@@ -96,7 +95,7 @@ class Checkout extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="checkout">
         <Header />
         <h2>Checkout</h2>
         <Container>
@@ -122,7 +121,7 @@ class Checkout extends Component {
               <div>
                 {this.state.tickets.map((ticket, i) => {
                   return (
-                    <div key={i}>
+                    <div key={i} className="ticket">
                       <p>{ticket.type}</p>
                       <p>${ticket.price}</p>
 

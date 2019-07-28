@@ -34,73 +34,71 @@ class EventDetails extends Component {
   }
   render() {
     return (
-      <div>
-      <Header/>
-      <Container>
-        <Row>
-          <Col></Col>
-          <Col xs={12} md={8}>
-            <Tabs
-              defaultActiveKey="Details"
-              id="uncontrolled-tab-example"
-              className="tabs"
-            >
-              <Tab eventKey="Details" title="Event Details">
-                <div className="event">
-                  <img
-                    className="event-image"
-                    src={`http://localhost:8080/${this.state.image}`}
-                    alt={this.state.title}
-                  />
-                  <h2>{this.state.title}</h2>
-                  <h3>{this.state.category}</h3>
-                  <p>{this.state.description}</p>
-                  <h4>Date:</h4>
-                  <p>
-                    Starts at: {moment(this.state.startsAt).format("MMM Do YY")}
-                  </p>
-                  <p>
-                    Ends at: {moment(this.state.endsAt).format("MMM Do YY")}
-                  </p>
-                  {/* {this.state.tickets.map(ticket => {
-                    return (
-                      <div>
-                        <p>Ticket type: {ticket.type}</p>
-                        <p>Price: {ticket.price}</p>
-                      </div>
-                    );
-                  })} */}
-                  {getToken() ? (
-                    <Link to={`/checkout/${this.state.id}`}>
-                      <Button>Buy Ticket</Button>
-                    </Link>
-                  ) : (
-                    <div>
-                      <p>Please login to buy ticket</p>
-                      <Button disabled>Buy Ticket</Button>
-                    </div>
-                  )}
-                </div>
-              </Tab>
+      <div className="event-details">
+        <Header />
+        <Container>
+          <Row>
+            <Col>
+              <img
+                src={`http://localhost:8080/${this.state.image}`}
+                className="event-details-image"
+                alt={this.state.title}
+              />
+            </Col>
+            <Col xs={12} md={8}>
+              <div className="tab-container">
+                <Tabs
+                  defaultActiveKey="Details"
+                  id="uncontrolled-tab-example"
+                  className="tabs"
+                >
+                  <Tab eventKey="Details" title="Event Details">
+                    <div className="event-details-content">
+                      <h2>{this.state.title}</h2>
+                      <h4>{this.state.category}</h4>
+                      <p>{this.state.description}</p>
 
-              <Tab eventKey="agenda" title="Agenda">
-                <div>
-                  {this.state.agendas.map(agenda => {
-                    return (
-                      <div key={agenda.id}>
-                        <p>{agenda.title}</p>
-                        <p>{agenda.date}</p>
-                        <p>{agenda.time}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Tab>
-            </Tabs>
-          </Col>
-          <Col></Col>
-        </Row>
-      </Container>
+                      <p className="event-time">
+                        Starts at:{" "}
+                        {moment(this.state.startsAt).format("DD/MM/YYYY")}
+                      </p>
+                      <p className="event-time">
+                        Ends at:{" "}
+                        {moment(this.state.endsAt).format("DD/MM/YYYY")}
+                      </p>
+
+                      {getToken() ? (
+                        <Link to={`/checkout/${this.state.id}`}>
+                          <Button className="btn-filled">Buy Ticket</Button>
+                        </Link>
+                      ) : (
+                        <div>
+                          <p>Please login to buy ticket</p>
+                          <Button disabled>Buy Ticket</Button>
+                        </div>
+                      )}
+                    </div>
+                  </Tab>
+
+                  <Tab eventKey="agenda" title="Agenda">
+                    <div className="agenda">
+                      {this.state.agendas.map(agenda => {
+                        return (
+                          <div key={agenda.id}>
+                            <p>{moment(agenda.date).format("DD/MM/YYYY")}</p>
+                            <p>{agenda.time}</p>
+                            <p>{agenda.title}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </Tab>
+                </Tabs>
+              </div>
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
       </div>
     );
   }

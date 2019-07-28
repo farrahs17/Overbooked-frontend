@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Quantity extends Component {
   handleIncrement = () => {
@@ -13,14 +16,12 @@ class Quantity extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleIncrement}>
-          <i class="fas fa-plus-circle"></i>
-        </button>
+      <div className="quantity">
+        <i onClick={this.handleIncrement} class="fas fa-plus-circle"></i>
+
         <p>{this.props.quantity || 0}</p>
-        <button onClick={this.handleDecrement}>
-          <i class="fas fa-minus-circle"></i>
-        </button>
+
+        <i onClick={this.handleDecrement} class="fas fa-minus-circle"></i>
       </div>
     );
   }
