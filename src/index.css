@@ -1400,7 +1400,7 @@
 }
 
 .header-bg {
-  background-color: #cde6f3;
+  background-color: white;
   height: 80px;
 }
 .header-bg .logo {
@@ -1412,11 +1412,6 @@
 .header-bg .login {
   display: flex;
 }
-.header-bg button {
-  background-color: #4a4e69;
-  border-color: #4a4e69;
-  border-radius: 5%;
-}
 .header-bg button:hover,
 .header-bg button:active {
   border-color: white !important;
@@ -1424,12 +1419,21 @@
 }
 
 .category .nav-link {
-  color: #9e7e91 !important;
+  color: #4a4e69 !important;
 }
 
 .search-input {
   width: 50%;
   padding: 20px;
+}
+
+.art-link {
+  background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2019/03/elements-of-art-6.jpg");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
 }
 
 .card-deck {
@@ -1477,6 +1481,29 @@
 
 .card-link {
   text-decoration: none;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-subtitle {
+  text-align: center;
+}
+
+.card-event {
+  width: 320px;
+  height: 300px;
+}
+
+.card-overlay {
+  width: 320px;
+  height: 300px;
+}
+
+.card-deck .event-image {
+  min-height: 300px;
+  opacity: 0.7;
 }
 
 .btn-filled {
