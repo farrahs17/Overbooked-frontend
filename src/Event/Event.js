@@ -34,7 +34,7 @@ const Event = ({ event, handleDelete, isAdmin }) => {
           </Link>
         </Button>
         {/* </Card.Link> */}
-        {isAdmin ? (
+        {isAdmin && (
           <>
             <Button
               variant="outline-secondary"
@@ -52,8 +52,6 @@ const Event = ({ event, handleDelete, isAdmin }) => {
               </Link>
             </Button>
           </>
-        ) : (
-          <Card.Link variant="primary">Buy Ticket</Card.Link>
         )}
       </Card.ImgOverlay>
     </Card>
