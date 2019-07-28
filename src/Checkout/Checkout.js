@@ -17,36 +17,80 @@ class Checkout extends Component {
     description: "",
     startsAt: "",
     endsAt: "",
-    tickets: [{ id: "", type: "", price: "" }],
+    tickets: [{ id: "", type: "", price: "", quantity: 0 }],
     total: 0
   };
-  handleTotal = total => {
-    this.setState({ total: total });
+  // handleTotal = total => {
+  //   this.setState({ total: total });
+  // };
+
+  handleIncrement = id => {
+    let tickets = this.state.tickets;
+    let total = this.state.total;
+    tickets = tickets.map(ticket => {
+      if (id === ticket.id) {
+        total = total + ticket.price;
+        return {
+          ...ticket,
+          quantity: ticket.quantity ? ticket.quantity + 1 : 1
+        };
+      } else {
+        return ticket;
+      }
+    });
+    this.setState({ tickets, total }, () => console.log(this.state));
   };
-  onToken = (token, addresses) => {
-    // TODO: Send the token information and any other
-    // relevant information to your payment process
-    // server, wait for the response, and update the UI
-    // accordingly. How this is done is up to you. Using
-    // XHR, fetch, or a GraphQL mutation is typical.
+
+  handleDecrement = id => {
+    let tickets = this.state.tickets;
+    let total = this.state.total;
+    tickets = tickets.map(ticket => {
+      if (id === ticket.id && ticket.quantity > 0) {
+        total -= ticket.price;
+        return { ...ticket, quantity: ticket.quantity && ticket.quantity - 1 };
+      } else {
+        return ticket;
+      }
+    });
+    this.setState({ tickets, total });
+  };
+
+  formatTickets = tickets => {
+    let formatedTickets = [];
+    tickets.map(ticket => {
+      if (ticket.quantity) {
+        formatedTickets.push({
+          ticket_id: ticket.id,
+          quantity: ticket.quantity
+        });
+      }
+    });
+    return formatedTickets;
+  };
+  onToken = token => {
+    let tickets = this.formatTickets(this.state.tickets);
+    console.log(token);
+    axios
+      .post(
+        `http://localhost:8080/api/checkout/`,
+        { token: token, total: this.state.total, tickets },
+        {
+          headers: {
+            Authorization: "Bearer " + getToken()
+          }
+        }
+      )
+      .then(event => {
+        console.log("========" + event.data);
+      });
   };
   componentDidMount() {
     const { id } = this.props.match.params;
     axios.get(`http://localhost:8080/api/get-event/${id}`).then(event => {
       this.setState(event.data);
     });
-    // axios
-    //   .get(`http://localhost:8080/api/checkout/${id}`, {
-    //     headers: {
-    //       Authorization: "Bearer " + getToken()
-    //     }
-    //   })
-    //   .then(event => {
-    //     console.log("========" + event.data);
-    //   });
   }
   render() {
-    // console.log(this.state.tickets);
     return (
       <div>
         <h2>Checkout</h2>
@@ -80,7 +124,9 @@ class Checkout extends Component {
                       <Quantity
                         ticketId={ticket.id}
                         eventId={this.state.id}
-                        total={this.handleTotal}
+                        handleIncrement={this.handleIncrement}
+                        handleDecrement={this.handleDecrement}
+                        quantity={ticket.quantity}
                       />
                     </div>
                   );
@@ -88,13 +134,13 @@ class Checkout extends Component {
 
                 <h3>Total price: ${this.state.total}</h3>
               </div>
-              {/* <div>
+              <div>
                 <StripeCheckout
                   stripeKey="pk_test_xajy240BrWgEH5FtU8wAP1OU00cxMY3iJY"
                   token={this.onToken}
-                  amount=""
+                  amount={this.state.total * 100}
                 />
-              </div> */}
+              </div>
             </Col>
           </Row>
         </Container>
