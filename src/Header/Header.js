@@ -73,10 +73,14 @@ class Header extends React.Component {
             {this.state.isAdmin ? (
               <Nav.Link>
                 <Link to="/admin/create-event">
-                  <Button className=" mt-2 ml-5">Create Event</Button>
+                  <Button variant="outline-warning" className=" mt-2 ml-5">
+                    Create Event
+                  </Button>
                 </Link>
                 <Link to="/admin/get-users">
-                  <Button className=" mt-2 ml-5">Show Users</Button>
+                  <Button variant="outline-warning" className=" mt-2 ml-5">
+                    Show Users
+                  </Button>
                 </Link>
               </Nav.Link>
             ) : null}
@@ -85,13 +89,17 @@ class Header extends React.Component {
             <Nav className="login">
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/login">
-                  <Button className="nav-button">Log In</Button>
+                  <Button variant="warning" className="nav-button">
+                    Log In
+                  </Button>
                 </Link>
               </Nav.Link>
 
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/signup">
-                  <Button className="nav-button">Sign Up</Button>
+                  <Button variant="warning" className="nav-button">
+                    Sign Up
+                  </Button>
                 </Link>
               </Nav.Link>
             </Nav>
@@ -99,7 +107,9 @@ class Header extends React.Component {
             <Nav>
               <Nav.Link>
                 <Link>
-                  <Button onClick={this.handleLogout}>Log out</Button>
+                  <Button variant="warning" onClick={this.handleLogout}>
+                    Log out
+                  </Button>
                 </Link>
               </Nav.Link>
             </Nav>

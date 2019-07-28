@@ -106,7 +106,7 @@ class CreateEvent extends Component {
       .then(res => {
         console.log(formData);
         console.log(res);
-        this.props.history.push("/");
+        this.props.history.push("/admin/homepage");
       })
       .catch(err => console.log(err));
   };

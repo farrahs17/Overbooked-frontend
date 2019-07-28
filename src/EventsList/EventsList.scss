@@ -1,9 +1,16 @@
 .category {
   .nav-link {
-    color: #9e7e91 !important;
+    color: #4a4e69 !important;
   }
 }
 .search-input {
   width: 50%;
   padding: 20px;
+}
+
+.art-link {
+  background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2019/03/elements-of-art-6.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }

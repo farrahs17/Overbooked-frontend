@@ -1,5 +1,5 @@
 .header-bg {
-  background-color: #cde6f3;
+  background-color: white;
   height: 80px;
   .logo {
     color: #4a4e69;
@@ -11,11 +11,11 @@
   .login {
     display: flex;
   }
-  button {
-    background-color: #4a4e69;
-    border-color: #4a4e69;
-    border-radius: 5%;
-  }
+  // button {
+  //   background-color: #4a4e69;
+  //   border-color: #4a4e69;
+  //   border-radius: 5%;
+  // }
   button:hover,
   button:active {
     border-color: white !important;

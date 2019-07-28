@@ -30,7 +30,8 @@ class editEvent extends Component {
       .put(`http://localhost:8080/api/edit-event/${id}`, this.state.event)
       .then(event => {
         console.log(event);
-        return this.setState({ isLoading: false, event: event.data.result });
+        this.setState({ isLoading: false, event: event.data.result });
+        this.props.history.push("/admin/homepage");
       });
   };
   handleImageEdit = e => {
