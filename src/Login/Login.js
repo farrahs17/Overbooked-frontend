@@ -4,6 +4,9 @@ import { saveToken } from "../Utils/utils";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { baseUrl } from "./../baseUrl";
+import Header from "../Header/Header";
+
+import { toast } from "react-toastify";
 
 class Login extends React.Component {
   state = {
@@ -13,6 +16,9 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (!this.state.email || !this.state.password) {
+      return toast("Required Fields are empty", { type: "error" });
+    }
     axios
       .post(`http://localhost:8080/api/login`, {
         email: this.state.email,
@@ -22,6 +28,11 @@ class Login extends React.Component {
         console.log(res.data.token);
         saveToken("token", res.data.token);
         this.props.history.push("/");
+        toast("Logged in successfully", { type: "success" });
+      })
+      .catch(res => {
+        toast(res.response.data.message, { type: "error" });
+        console.log(res.response.data.message);
       });
   };
 
@@ -36,36 +47,40 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} className="form-container">
-        <div className="form-outline">
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={this.handleEmailChange}
-              name="email"
-            />
-          </Form.Group>
+      <div>
+        <Header />
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={this.handlePasswordChange}
-              name="password"
-            />
-          </Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={this.props.isLoggedin}
-          >
-            Login
-          </Button>
-        </div>
-      </Form>
+        <Form onSubmit={this.handleSubmit} className="form-container">
+          <div className="form-outline">
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address *</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={this.handleEmailChange}
+                name="email"
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password *</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={this.handlePasswordChange}
+                name="password"
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={this.props.isLoggedin}
+            >
+              Login
+            </Button>
+          </div>
+        </Form>
+      </div>
     );
   }
 }

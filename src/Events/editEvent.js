@@ -94,18 +94,20 @@ class editEvent extends Component {
     }
     return (
       <div>
-        <CreateEvent
-          value={this.state.event}
-          edit={true}
-          handleImageEdit={this.handleImageEdit}
-          handleTitleEdit={this.handleTitleEdit}
-          handleCategoryEdit={this.handleCategoryEdit}
-          handleDescEdit={this.handleDescEdit}
-          handleStartsEdit={this.handleStartsEdit}
-          handleEndsEdit={this.handleEndsEdit}
-          handleTicketEdit={this.handleTicketEdit}
-          handleEditSubmit={this.handleEditSubmit}
-        />
+        <div>
+          <CreateEvent
+            value={this.state.event}
+            edit={true}
+            handleImageEdit={this.handleImageEdit}
+            handleTitleEdit={this.handleTitleEdit}
+            handleCategoryEdit={this.handleCategoryEdit}
+            handleDescEdit={this.handleDescEdit}
+            handleStartsEdit={this.handleStartsEdit}
+            handleEndsEdit={this.handleEndsEdit}
+            handleTicketEdit={this.handleTicketEdit}
+            handleEditSubmit={this.handleEditSubmit}
+          />
+        </div>
       </div>
     );
   }

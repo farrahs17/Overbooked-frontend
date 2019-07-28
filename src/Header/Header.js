@@ -4,13 +4,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import { getToken, clearToken } from "../Utils/utils";
+import { Redirect } from "react-router-dom";
 
+import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
 
 class Header extends React.Component {
   state = {
     isLoggedin: false,
-    isAdmin: false
+    isAdmin: false,
+    isAdminLogout: true
   };
   componentDidMount() {
     // const token = getToken();
@@ -24,10 +27,11 @@ class Header extends React.Component {
     // console.log(this.state.isAdmin);
     // console.log(this.state.isLoggedin);
     // this.handleAdminLogin();
+
     if (getToken()) {
       // this.setState({ isLoggedin: true });
       const token = getToken();
-      const decoded = token && jwtDecode(token);
+      const decoded = token ? jwtDecode(token) : null;
       console.log(decoded.isAdmin);
       if (decoded && decoded.isAdmin) {
         this.setState({ isAdmin: true, isLoggedin: true });
@@ -35,8 +39,13 @@ class Header extends React.Component {
     }
   }
   handleLogout = () => {
+    if (this.state.isAdmin) {
+      clearToken("token");
+      this.setState({ isLoggedin: false, isAdminLogout: false });
+    }
     clearToken("token");
     this.setState({ isLoggedin: false });
+    toast("You're logged out", { type: "info" });
   };
 
   render() {
@@ -61,12 +70,6 @@ class Header extends React.Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <Link className="nav-link nav-item" to="/admin/login">
-                Admin?
-              </Link>
-            </Nav.Link>
-
             {this.state.isAdmin ? (
               <Nav.Link>
                 <Link to="/admin/create-event">
@@ -78,7 +81,6 @@ class Header extends React.Component {
               </Nav.Link>
             ) : null}
           </Nav>
-
           {!getToken() ? (
             <Nav className="login">
               <Nav.Link>
@@ -102,6 +104,7 @@ class Header extends React.Component {
               </Nav.Link>
             </Nav>
           )}
+          {!this.state.isAdminLogout ? <Redirect to="/admin/login" /> : null}
         </Navbar.Collapse>
       </Navbar>
     );

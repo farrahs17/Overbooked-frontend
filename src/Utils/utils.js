@@ -3,7 +3,11 @@ function saveToken(key, token) {
 }
 
 function getToken() {
-  return localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+  if (token) {
+    return token;
+  }
+  return undefined;
 }
 
 function clearToken() {

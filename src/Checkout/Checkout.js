@@ -7,7 +7,11 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Quantity from "./Quantity";
 import StripeCheckout from "react-stripe-checkout";
+
 import { getToken } from "../Utils/utils";
+
+import Header from "../Header/Header";
+
 
 class Checkout extends Component {
   state = {
@@ -93,6 +97,7 @@ class Checkout extends Component {
   render() {
     return (
       <div>
+        <Header />
         <h2>Checkout</h2>
         <Container>
           <Row>

@@ -9,6 +9,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { getToken } from "../Utils/utils";
 import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 class EventDetails extends Component {
   state = {
@@ -33,6 +34,8 @@ class EventDetails extends Component {
   }
   render() {
     return (
+      <div>
+      <Header/>
       <Container>
         <Row>
           <Col></Col>
@@ -98,6 +101,7 @@ class EventDetails extends Component {
           <Col></Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

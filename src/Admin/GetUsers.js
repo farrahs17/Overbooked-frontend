@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import Header from "../Header/Header";
 
 class GetUsers extends Component {
   state = {
@@ -16,26 +17,29 @@ class GetUsers extends Component {
   render() {
     return (
       <div>
-        <Table striped bordered hover size="sm">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Username</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          {this.state.users.map(user => {
-            return (
-              <tbody>
-                <tr>
-                  <td>{user.id}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </Table>
+        <Header />
+        <div>
+          <Table striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            {this.state.users.map(user => {
+              return (
+                <tbody>
+                  <tr>
+                    <td>{user.id}</td>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </Table>
+        </div>
       </div>
     );
   }

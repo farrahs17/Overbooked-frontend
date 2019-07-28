@@ -1,60 +1,55 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { getToken } from "../Utils/utils";
 import jwtDecode from "jwt-decode";
 
-class PrivateRoute extends Component {
-  state = {
-    isLoggedin: false,
-    isAdmin: false
-  };
-
-  componentDidMount() {
-    this.handleLogin();
-  }
-
-  handleLogin = () => {
+const isAuthState = {
+  isAdminLoggedIn: false,
+  isUserLoggedIn: false,
+  checkState: function() {
     const token = getToken();
     const decoded = token && jwtDecode(token);
-    if (decoded) {
-      this.setState({ isLoggedin: true, isAdmin: true });
+    if (decoded && decoded.isAdmin) {
+      this.isAdminLoggedIn = true;
     }
-  };
+    if (decoded) {
+      this.isUserLoggedIn = true;
+    }
+  }
+};
 
-  render() {
-    const { component: Component, ...rest } = this.props;
-    console.log(this.state);
-    return (
-      <div>
-        <Route
-          {...rest}
-          render={props =>
-            props.isAdmin ? (
-              this.state.isAdmin ? (
-                <Component {...props} />
-              ) : (
-                <Redirect
-                  to={{
-                    pathname: "/admin/login",
-                    state: { from: props.location }
-                  }}
-                />
-              )
-            ) : this.state.isLoggedin ? (
-              <Component {...props} />
+const PrivateRoute = ({ Admin, User, isAdmin, ...rest }) => {
+  isAuthState.checkState();
+  return (
+    <div>
+      <Route
+        {...rest}
+        render={props =>
+          isAdmin ? (
+            isAuthState.isAdminLoggedIn ? (
+              <Admin {...props} />
             ) : (
               <Redirect
                 to={{
-                  pathname: "/login",
+                  pathname: "/admin/login",
                   state: { from: props.location }
                 }}
               />
             )
-          }
-        />
-      </div>
-    );
-  }
-}
+          ) : isAuthState.isUserLoggedIn ? (
+            <User {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: props.location }
+              }}
+            />
+          )
+        }
+      />
+    </div>
+  );
+};
 
 export default PrivateRoute;
