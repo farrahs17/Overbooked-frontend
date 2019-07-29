@@ -1409,6 +1409,11 @@
 .header-bg .logo h1 {
   font-size: 35px;
 }
+.header-bg .logo-img {
+  margin-top: 3%;
+  width: 100px;
+  height: 80px;
+}
 .header-bg .login {
   display: flex;
 }

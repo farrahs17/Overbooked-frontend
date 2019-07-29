@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import { getToken, clearToken } from "../Utils/utils";
 import { Redirect } from "react-router-dom";
-
+import logo from "../assets/overbooked-logo.png";
 import { toast } from "react-toastify";
 import jwtDecode from "jwt-decode";
 
@@ -59,11 +59,13 @@ class Header extends React.Component {
         <Navbar.Brand>
           {this.state.isAdmin ? (
             <Link className="logo" to="/admin/homepage">
-              <h1>OverBooked</h1>
+              {/* <h1>OverBooked</h1> */}
+              <img alt="Overbooked logo" src={logo} className="logo-img" />
             </Link>
           ) : (
             <Link className="logo" to="/">
-              <h1>OverBooked</h1>
+              {/* <h1>OverBooked</h1> */}
+              <img alt="Overbooked logo" src={logo} className="logo-img" />
             </Link>
           )}
         </Navbar.Brand>
