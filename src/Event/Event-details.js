@@ -74,7 +74,9 @@ class EventDetails extends Component {
                         </Link>
                       ) : (
                         <div>
-                          <p>Please login to buy ticket</p>
+                          <p className="err">
+                            <small>Please login to buy ticket</small>
+                          </p>
                           <Button disabled>Buy Ticket</Button>
                         </div>
                       )}
@@ -82,13 +84,13 @@ class EventDetails extends Component {
                   </Tab>
 
                   <Tab eventKey="agenda" title="Agenda">
-                    <div className="agenda">
+                    <div>
                       {this.state.agendas.map(agenda => {
                         return (
-                          <div key={agenda.id}>
-                            <p>{moment(agenda.date).format("DD/MM/YYYY")}</p>
-                            <p>{agenda.time}</p>
+                          <div key={agenda.id} className="agenda">
                             <p>{agenda.title}</p>
+                            <p>{agenda.time}</p>
+                            <p>{moment(agenda.date).format("DD/MM/YYYY")}</p>
                           </div>
                         );
                       })}

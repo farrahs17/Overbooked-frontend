@@ -1412,11 +1412,6 @@
 .header-bg .login {
   display: flex;
 }
-.header-bg button:hover,
-.header-bg button:active {
-  border-color: white !important;
-  background-color: #4a4e69af !important;
-}
 
 .category .nav-link {
   color: #4a4e69 !important;
@@ -1474,9 +1469,20 @@
 .tab-container .event-details-content .event-time {
   font-size: 14px;
 }
-.tab-container .event-details-content .agenda {
-  display: inline;
+
+.agenda {
+  display: flex;
   direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  padding: 3%;
+}
+
+.err {
+  color: #fa7268;
 }
 
 .card-link {

@@ -89,17 +89,13 @@ class Header extends React.Component {
             <Nav className="login">
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/login">
-                  <Button variant="warning" className="nav-button">
-                    Log In
-                  </Button>
+                  <Button className="nav-button btn-filled">Log In</Button>
                 </Link>
               </Nav.Link>
 
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/signup">
-                  <Button variant="warning" className="nav-button">
-                    Sign Up
-                  </Button>
+                  <Button className="nav-button btn-filled">Sign Up</Button>
                 </Link>
               </Nav.Link>
             </Nav>
@@ -107,7 +103,7 @@ class Header extends React.Component {
             <Nav>
               <Nav.Link>
                 <Link>
-                  <Button variant="warning" onClick={this.handleLogout}>
+                  <Button className="btn-filled" onClick={this.handleLogout}>
                     Log out
                   </Button>
                 </Link>

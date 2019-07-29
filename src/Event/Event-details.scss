@@ -37,9 +37,18 @@
     .event-time {
       font-size: 14px;
     }
-    .agenda {
-      display: inline;
-      direction: row;
-    }
   }
+}
+.agenda {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  padding: 3%;
+}
+.err {
+  color: #fa7268;
 }
