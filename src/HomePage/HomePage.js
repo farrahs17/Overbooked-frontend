@@ -1,11 +1,12 @@
 import React from "react";
 import EventsList from "../EventsList/EventsList";
-import Header from "../Header/Header";
+import CarouselComp from "../Header/Carousel";
 
 class HomePage extends React.Component {
   render() {
     return (
       <div>
+        <CarouselComp />
         <EventsList />
       </div>
     );
