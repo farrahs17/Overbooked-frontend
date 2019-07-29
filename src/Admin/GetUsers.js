@@ -19,7 +19,7 @@ class GetUsers extends Component {
       <div>
         <Header />
         <div>
-          <Table striped bordered hover size="sm">
+          <Table className="mt-5" striped bordered hover size="sm">
             <thead>
               <tr>
                 <th>Id</th>

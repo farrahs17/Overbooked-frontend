@@ -116,7 +116,7 @@ class CreateEvent extends Component {
       <div>
         <Header />
 
-        <Accordion defaultActiveKey="0">
+        <Accordion className="mt-5" defaultActiveKey="0">
           <div>
             <form encType="multipart/form-data">
               <Card>

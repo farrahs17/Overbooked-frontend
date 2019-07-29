@@ -75,12 +75,18 @@ class Header extends React.Component {
             {this.state.isAdmin ? (
               <Nav.Link>
                 <Link to="/admin/create-event">
-                  <Button variant="outline-warning" className=" mt-2 ml-5">
+                  <Button
+                    variant="outline-warning"
+                    className="admin-button mt-2 ml-5"
+                  >
                     Create Event
                   </Button>
                 </Link>
                 <Link to="/admin/get-users">
-                  <Button variant="outline-warning" className=" mt-2 ml-5">
+                  <Button
+                    variant="outline-warning"
+                    className="admin-button mt-2 ml-5"
+                  >
                     Show Users
                   </Button>
                 </Link>

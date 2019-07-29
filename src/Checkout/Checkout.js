@@ -95,10 +95,10 @@ class Checkout extends Component {
   }
   render() {
     return (
-      <div className="checkout">
+      <div className="checkout ">
         <Header />
-        <h2>Checkout</h2>
-        <Container>
+        <h2 className="mt-5">Checkout</h2>
+        <Container className="mt-5">
           <Row>
             <Col>
               <h3>Event</h3>
