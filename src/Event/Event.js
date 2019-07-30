@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./Event.scss";
 const Event = ({ event, handleDelete, isAdmin }) => {
   return (
-    <Card className="bg-dark text-white card-event mt-5" id={event.id}>
+    <Card className="bg-light text-white card-event mt-5" id={event.id}>
       <Card.Img
         className="event-image"
         variant="top"
@@ -15,16 +15,13 @@ const Event = ({ event, handleDelete, isAdmin }) => {
       <Card.ImgOverlay className="card-overlay">
         <Card.Title className="card-title mb-4">{event.title}</Card.Title>
         <Card.Subtitle className="card-subtitle mb-5">
-          Category: {event.category}
+          {event.category}
         </Card.Subtitle>
 
         <Card.Text>
-          Starts At: {moment(event.startsAt).format("MMMM Do YYYY")}
+          {moment(event.startsAt).format("MM/DD/YYYY")} -{" "}
+          {moment(event.endsAt).format("MM/DD/YYYY")}
         </Card.Text>
-        <Card.Text>
-          Ends At: {moment(event.endsAt).format("MMMM Do YYYY")}
-        </Card.Text>
-
         <Button variant="outline-secondary" className="mt-3 mr-2">
           <Link
             className="text-white card-button "
@@ -33,7 +30,7 @@ const Event = ({ event, handleDelete, isAdmin }) => {
             View Event
           </Link>
         </Button>
-        {/* </Card.Link> */}
+
         {isAdmin && (
           <>
             <Button

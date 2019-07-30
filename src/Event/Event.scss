@@ -1,27 +1,21 @@
-.card-link {
-  text-decoration: none;
-}
-
-.card-title {
-  text-align: center;
-}
-.card-subtitle {
-  text-align: center;
-}
-
 .card-event {
   width: 320px;
   height: 300px;
-}
-
-.card-overlay {
-  width: 320px;
-  height: 300px;
-}
-
-.card-deck {
+  .card-subtitle {
+    text-align: center;
+  }
+  .card-title {
+    text-align: center;
+  }
+  .card-link {
+    text-decoration: none;
+  }
   .event-image {
     min-height: 300px;
     opacity: 0.7;
+  }
+  .card-overlay {
+    width: 300px;
+    height: 300px;
   }
 }

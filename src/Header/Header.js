@@ -16,18 +16,6 @@ class Header extends React.Component {
     isAdminLogout: true
   };
   componentDidMount() {
-    // const token = getToken();
-    // const decoded = token && jwtDecode(token);
-    // console.log(decoded.isAdmin);
-    // if (decoded && decoded.isAdmin) {
-    //   this.setState({ isAdmin: true, isLoggedin: true });
-    // } else if (decoded) {
-    //   this.setState({ isLoggedin: true });
-    // }
-    // console.log(this.state.isAdmin);
-    // console.log(this.state.isLoggedin);
-    // this.handleAdminLogin();
-
     if (getToken()) {
       // this.setState({ isLoggedin: true });
       const token = getToken();
