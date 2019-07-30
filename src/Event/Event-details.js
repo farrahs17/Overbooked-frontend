@@ -56,7 +56,8 @@ class EventDetails extends Component {
                   <Tab eventKey="Details" title="Event Details">
                     <div className="event-details-content">
                       <h2>{this.state.title}</h2>
-                      <h4>{this.state.category}</h4>
+                      <h4>Category: {this.state.category}</h4>
+                      {/* <h3> Description:</h3> */}
                       <p>{this.state.description}</p>
 
                       <p className="event-time">

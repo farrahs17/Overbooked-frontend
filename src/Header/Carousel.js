@@ -1,11 +1,11 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-import musicImg from "../assets/img1.jpeg";
-import artImg from "../assets/img2.jpeg";
-import sportImg from "../assets/img3.jpeg";
-import bussImg from "../assets/img4.jpeg";
-import fashionImg from "../assets/img5.jpeg";
-import cinemaImg from "../assets/img7.jpeg";
+import musicImg from "../assets/classic-close-up-dark-358666.jpg";
+import artImg from "../assets/acrylic-art-brush-1012982.jpg";
+import sportImg from "../assets/action-color-field-1432035.jpg";
+import bussImg from "../assets/adult-composition-corporate-attire-959816.jpg";
+import fashionImg from "../assets/brushes-colors-fashion-768975.jpg";
+import cinemaImg from "../assets/adult-bar-cafe-cinema-375885.jpg";
 import "./header.scss";
 const CarouselComp = () => {
   return (
