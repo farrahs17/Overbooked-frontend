@@ -76,7 +76,7 @@ class Login extends React.Component {
               />
             </Form.Group>
             <Button
-              variant="primary"
+              className="btn-filled"
               type="submit"
               onClick={this.props.isLoggedin}
             >

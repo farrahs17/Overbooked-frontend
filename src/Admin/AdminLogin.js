@@ -73,7 +73,7 @@ class AdminLogin extends React.Component {
                 name="password"
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="btn-filled" type="submit">
               Login
             </Button>
           </div>
