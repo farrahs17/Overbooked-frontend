@@ -25,7 +25,7 @@ class GetUsers extends Component {
             bordered
             hover
             size="sm"
-            style={{ marginBottom: 240 }}
+            style={{ marginBottom: 340 }}
           >
             <thead>
               <tr>

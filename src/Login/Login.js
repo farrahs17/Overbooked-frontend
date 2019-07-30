@@ -52,7 +52,7 @@ class Login extends React.Component {
 
         <Form
           onSubmit={this.handleSubmit}
-          style={{ marginBottom: 155 }}
+          style={{ marginBottom: 255 }}
           className="form-container"
         >
           <div className="form-outline">

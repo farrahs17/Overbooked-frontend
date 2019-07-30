@@ -51,7 +51,7 @@ class AdminLogin extends React.Component {
         <Form
           onSubmit={this.handleSubmit}
           className="form-container "
-          style={{ marginBottom: 155 }}
+          style={{ marginBottom: 255 }}
         >
           <div className="form-outline">
             <Form.Group controlId="formBasicEmail">
