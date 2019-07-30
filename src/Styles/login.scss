@@ -22,3 +22,21 @@
     width: 20%;
   }
 }
+
+@media (max-width: 376px) {
+  .form-container {
+    width: 350px;
+    height: 400px;
+    margin-top: 40%;
+    margin-left: 3%;
+    .form-outline {
+      width: 90%;
+    }
+    .signup {
+      height: 330px;
+      .btn {
+        width: 50%;
+      }
+    }
+  }
+}

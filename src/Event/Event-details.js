@@ -100,7 +100,7 @@ class EventDetails extends Component {
                 </Tabs>
               </div>
             </Col>
-            <Col></Col>
+            <Col xs={12} md={8}></Col>
           </Row>
         </Container>
       </div>

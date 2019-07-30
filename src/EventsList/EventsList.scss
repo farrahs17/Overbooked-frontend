@@ -12,13 +12,6 @@
   margin: auto;
 }
 
-// .art-link {
-//   background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2019/03/elements-of-art-6.jpg");
-//   background-position: center; /* Center the image */
-//   background-repeat: no-repeat; /* Do not repeat the image */
-//   background-size: cover;
-// }
-
 .upcoming-events {
   text-align: center;
   margin-bottom: 30px;
@@ -37,4 +30,16 @@ hr {
 .card-deck {
   margin-left: 10%;
   margin-right: 7%;
+}
+
+@media (max-width: 376px) {
+  .card-deck {
+    margin-left: 4%;
+  }
+  .category {
+    margin-top: 10%;
+  }
+  .search-input {
+    width: 80%;
+  }
 }

@@ -2,8 +2,6 @@
   background-color: white;
   height: 80px;
   .logo {
-    color: #4a4e69;
-
     h1 {
       font-size: 35px;
     }
@@ -14,14 +12,23 @@
     width: 150px;
     height: 100px;
   }
-  .login {
-    display: flex;
+  .nav-link {
+    position: relative;
+    right: 0;
   }
-  // button {
-  //   background-color: #4a4e69;
-  //   border-color: #4a4e69;
-  //   border-radius: 5%;
-  // }
+  .links {
+    width: 350px;
+    display: inline;
+    a {
+      color: #fa7268;
+      padding: 3%;
+      width: 100px;
+    }
+    a:hover {
+      text-decoration: none;
+      color: lightgray;
+    }
+  }
 }
 
 .carousel-item {
@@ -31,15 +38,48 @@
 .footer {
   background: rgba(0, 0, 0, 0.884);
   width: 100%;
-
   margin-top: auto;
-
-  // margin-top: 1000px;
-  // margin-bottom: 0;
 }
 
 .App {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+@media (max-width: 376px) {
+  .carousel {
+    display: none;
+  }
+  .header-bg .logo-img {
+    margin-top: 10%;
+    width: 89px;
+    height: 79px;
+  }
+  .collapsing {
+    display: none;
+  }
+  .show {
+    background: whitesmoke;
+    position: fixed;
+    width: 40%;
+    right: 13px;
+    top: 81px;
+    z-index: 5;
+    .login a {
+      margin-left: 10%;
+    }
+    .links {
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      a {
+        color: #fa7268;
+        padding: 3%;
+        margin-left: 5%;
+        width: 200px;
+        display: inline;
+      }
+    }
+  }
 }

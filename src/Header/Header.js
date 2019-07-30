@@ -59,44 +59,29 @@ class Header extends React.Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            {this.state.isAdmin ? (
-              <Nav.Link>
-                <Link to="/admin/create-event">
-                  <Button
-                    variant="outline-warning"
-                    className="admin-button mt-2 ml-5"
-                  >
-                    Create Event
-                  </Button>
-                </Link>
-                <Link to="/admin/get-users">
-                  <Button
-                    variant="outline-warning"
-                    className="admin-button mt-2 ml-5"
-                  >
-                    Show Users
-                  </Button>
-                </Link>
-              </Nav.Link>
-            ) : null}
-          </Nav>
+          {this.state.isAdmin ? (
+            <Nav className="mr-auto links">
+              <Link to="/admin/create-event">Create Event</Link>
+
+              <Link to="/admin/get-users">Show Users</Link>
+            </Nav>
+          ) : null}
           {!getToken() ? (
             <Nav className="login">
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/login">
-                  <Button className="nav-button btn-filled">Log In</Button>
+                  <Button className="btn-filled">Log In</Button>
                 </Link>
               </Nav.Link>
 
               <Nav.Link>
                 <Link className="nav-link nav-item" to="/signup">
-                  <Button className="nav-button btn-filled">Sign Up</Button>
+                  <Button className=" btn-filled">Sign Up</Button>
                 </Link>
               </Nav.Link>
             </Nav>
           ) : (
-            <Nav>
+            <Nav className="login">
               <Nav.Link>
                 <Link>
                   <Button className="btn-filled" onClick={this.handleLogout}>

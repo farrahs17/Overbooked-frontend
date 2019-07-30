@@ -38,7 +38,11 @@ class TicketTiers extends React.Component {
             </div>
           );
         })}
-        <button onClick={addTicket} type="button">
+        <button
+          className="btn-filled btn text-white"
+          onClick={addTicket}
+          type="button"
+        >
           Add new ticket
         </button>
       </div>

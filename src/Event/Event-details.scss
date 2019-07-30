@@ -52,3 +52,12 @@
 .err {
   color: #fa7268;
 }
+
+@media (min-width: 376px) {
+  .event-details-image {
+    margin-top: 12%;
+    min-height: 366px;
+    max-width: 348px;
+    max-height: 400px;
+  }
+}

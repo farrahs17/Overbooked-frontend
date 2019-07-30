@@ -62,7 +62,7 @@ class SignUp extends React.Component {
         <Header />
 
         <Form onSubmit={this.handleSubmit} className="form-container">
-          <div className="form-outline">
+          <div className="form-outline signup">
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Username *</Form.Label>
               <Form.Control
