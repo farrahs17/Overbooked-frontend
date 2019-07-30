@@ -50,7 +50,11 @@ class Login extends React.Component {
       <div>
         <Header />
 
-        <Form onSubmit={this.handleSubmit} className="form-container">
+        <Form
+          onSubmit={this.handleSubmit}
+          style={{ marginBottom: 155 }}
+          className="form-container"
+        >
           <div className="form-outline">
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address *</Form.Label>

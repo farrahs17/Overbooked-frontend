@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import FilterEvents from "./FilterEvents";
 import Header from "../Header/Header";
 import "./EventsList.scss";
+import FooterPage from "../Header/Footer";
 
 function searchingFor(term) {
   return function(x) {
@@ -87,6 +88,7 @@ class EventsList extends React.Component {
           />
         </InputGroup>
         <h1 className="upcoming-events">Upcoming Events</h1>
+        <hr />
         <CardDeck className="card-deck">
           {this.state.events
             .filter(searchingFor(this.state.term))
