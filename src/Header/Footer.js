@@ -12,7 +12,7 @@ const FooterPage = () => {
             <p>A mighty fine ticketing platform</p>
           </MDBCol>
           <MDBCol md="2">
-            <h5 className="title">Links</h5>
+            <h5 className="title">Go To:</h5>
             <ul>
               <li className="list-unstyled">
                 <Link className="text-light" to="/">

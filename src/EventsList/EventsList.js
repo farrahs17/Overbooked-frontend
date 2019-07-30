@@ -90,23 +90,22 @@ class EventsList extends React.Component {
         </InputGroup>
         <h1 className="upcoming-events">Upcoming Events</h1>
         <hr />
-        <Container>
-          <CardDeck className="card-deck">
-            {this.state.events
-              .filter(searchingFor(this.state.term))
-              .map(event => {
-                return (
-                  <div className="event" id={event.id}>
-                    <Event
-                      event={event}
-                      handleDelete={() => this.handleDelete(event.id)}
-                      isAdmin={this.state.isAdmin}
-                    />
-                  </div>
-                );
-              })}
-          </CardDeck>
-        </Container>
+
+        <CardDeck className="card-deck">
+          {this.state.events
+            .filter(searchingFor(this.state.term))
+            .map(event => {
+              return (
+                <div className="event" id={event.id}>
+                  <Event
+                    event={event}
+                    handleDelete={() => this.handleDelete(event.id)}
+                    isAdmin={this.state.isAdmin}
+                  />
+                </div>
+              );
+            })}
+        </CardDeck>
       </React.Fragment>
     );
   }
