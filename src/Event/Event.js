@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./Event.scss";
 const Event = ({ event, handleDelete, isAdmin }) => {
   return (
-    <Card className="bg-dark text-white card-event" id={event.id}>
+    <Card className="bg-dark text-white card-event mt-5" id={event.id}>
       <Card.Img
         className="event-image"
         variant="top"
