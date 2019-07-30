@@ -10,6 +10,8 @@ import editEvent from "../Events/editEvent";
 import Checkout from "../Checkout/Checkout";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import GetUsers from "../Admin/GetUsers";
+import EventStats from "../Admin/EventStats";
+
 import React, { Component } from "react";
 
 class Router extends Component {
@@ -45,6 +47,12 @@ class Router extends Component {
             path="/admin/get-users"
             isAdmin={true}
             Admin={GetUsers}
+            User={HomePage}
+          />
+          <PrivateRoute
+            path="/admin/event-stats"
+            isAdmin={true}
+            Admin={EventStats}
             User={HomePage}
           />
         </Switch>
