@@ -58,47 +58,6 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      // <div className="signup-container">
-      //   <form onSubmit={this.handleSubmit}>
-      //     <label className="email-label">
-      //       Email
-      //       <input
-      //         onChange={this.handleEmailChange}
-      //         type="text"
-      //         id="email"
-      //         name="email"
-      //       />
-      //     </label>
-      //     <label className="username-label">
-      //       Username
-      //       <input
-      //         onChange={this.handleUsernameChange}
-      //         type="text"
-      //         id="username"
-      //         name="username"
-      //       />
-      //     </label>
-      //     <label>
-      //       Password
-      //       <input
-      //         type="password"
-      //         id="password"
-      //         name="password"
-      //         onChange={this.handlePasswordChange}
-      //       />
-      //     </label>
-      //     <label>
-      //       Re-enter Password
-      //       <input
-      //         type="password"
-      //         id="passVerification"
-      //         name="passVerification"
-      //         onChange={this.handlePassVerificationChange}
-      //       />
-      //     </label>
-      //     <button type="submit">Sign up</button>
-      //   </form>
-      // </div>
       <div>
         <Header />
 
@@ -133,7 +92,7 @@ class SignUp extends React.Component {
                 name="password"
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="btn-filled" type="submit">
               Sign Up
             </Button>
           </div>

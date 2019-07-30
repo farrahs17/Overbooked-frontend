@@ -1387,16 +1387,6 @@
   margin-top: 5%;
   margin-bottom: 5%;
   width: 20%;
-  background-color: #9e7e91;
-  border-color: #9e7e91;
-}
-.form-container button:hover {
-  border-color: #cde6f3;
-  background-color: #9e7e91b4;
-}
-.form-container button:active {
-  background-color: #9e7e91 !important;
-  border-color: #9e7e91 !important;
 }
 
 .header-bg {
@@ -1461,7 +1451,7 @@ hr {
   text-align: center;
   border: 0;
   border-top: 1px solid #4a4e69;
-  margin: 0 auto 70px auto;
+  margin: 0 auto 30px auto;
   padding: 0;
 }
 

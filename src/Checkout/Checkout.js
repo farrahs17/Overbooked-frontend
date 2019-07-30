@@ -23,9 +23,7 @@ class Checkout extends Component {
     tickets: [{ id: "", type: "", price: "", quantity: 0 }],
     total: 0
   };
-  // handleTotal = total => {
-  //   this.setState({ total: total });
-  // };
+  
 
   handleIncrement = id => {
     let tickets = this.state.tickets;

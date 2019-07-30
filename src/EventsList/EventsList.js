@@ -11,6 +11,7 @@ import FilterEvents from "./FilterEvents";
 import Header from "../Header/Header";
 import "./EventsList.scss";
 import FooterPage from "../Header/Footer";
+import Container from "react-bootstrap/Container";
 
 function searchingFor(term) {
   return function(x) {
@@ -89,21 +90,23 @@ class EventsList extends React.Component {
         </InputGroup>
         <h1 className="upcoming-events">Upcoming Events</h1>
         <hr />
-        <CardDeck className="card-deck">
-          {this.state.events
-            .filter(searchingFor(this.state.term))
-            .map(event => {
-              return (
-                <div className="event" id={event.id}>
-                  <Event
-                    event={event}
-                    handleDelete={() => this.handleDelete(event.id)}
-                    isAdmin={this.state.isAdmin}
-                  />
-                </div>
-              );
-            })}
-        </CardDeck>
+        <Container>
+          <CardDeck className="card-deck">
+            {this.state.events
+              .filter(searchingFor(this.state.term))
+              .map(event => {
+                return (
+                  <div className="event" id={event.id}>
+                    <Event
+                      event={event}
+                      handleDelete={() => this.handleDelete(event.id)}
+                      isAdmin={this.state.isAdmin}
+                    />
+                  </div>
+                );
+              })}
+          </CardDeck>
+        </Container>
       </React.Fragment>
     );
   }
