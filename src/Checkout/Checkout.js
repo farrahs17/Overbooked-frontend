@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Quantity from "./Quantity";
 import StripeCheckout from "react-stripe-checkout";
-
+import { toast } from "react-toastify";
 import { getToken } from "../Utils/utils";
 
 import Header from "../Header/Header";
@@ -23,7 +23,6 @@ class Checkout extends Component {
     tickets: [{ id: "", type: "", price: "", quantity: 0 }],
     total: 0
   };
-  
 
   handleIncrement = id => {
     let tickets = this.state.tickets;
@@ -83,6 +82,11 @@ class Checkout extends Component {
       )
       .then(event => {
         console.log("========" + event.data);
+        toast("Success!", { type: "success" });
+      })
+      .catch(res => {
+        toast(res.response.data.message, { type: "error" });
+        console.log(res.response.data.message);
       });
   };
   componentDidMount() {
